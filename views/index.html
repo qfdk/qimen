@@ -4,8 +4,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>九宫格</title>
+    <title>奇门遁甲排盘（茅山派）</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -14,34 +16,52 @@
             <div class="grid">
                 <h3>
                     <%= time %>
-                    <br>
-                    <%= year %><span>年</span>
-                    <%= month %><span>月</span>
-                    <%= date %><span>日</span>
-                    <%= hour %><span>时</span>
-                    <br>
-                    <%= wuxing.year %><span>年</span>
-                    <%= wuxing.month %><span>月</span>
-                    <%= wuxing.date %><span>日</span>
-                    <%= wuxing.hour %><span>时</span>
+                        <br>
+                        <span class="label label-primary">
+                            <%= year %>
+                        </span> 年
+                        <span class="label label-primary">
+                            <%= month %>
+                        </span> 月
+                        <span class="label label-primary">
+                            <%= date %>
+                        </span> 日
+                        <span class="label label-primary">
+                            <%= hour %>
+                        </span> 时
+                        <br>
+                        <span class="label label-warning">
+                            <%= wuxing.year %>
+                        </span> 年
+                        <span class="label label-warning">
+                            <%= wuxing.month %>
+                        </span> 月
+                        <span class="label label-warning">
+                            <%= wuxing.date %>
+                        </span> 日
+                        <span class="label label-warning">
+                            <%= wuxing.hour %>
+                        </span> 时
                 </h3>
                 <div id="case4" class="block" style="background-color: #8BC34A;">
                     <table>
                         <tbody>
                             <tr>
-                                <td>4 巽</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>4 巽</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden34">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden34">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden34">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -50,19 +70,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>9 离</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>9 离</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden9">x</td>
                             </tr>
                             <tr>
-                                <td>5</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden9">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>7</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden9">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -71,19 +93,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>2 坤</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>2 坤</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden258">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden258">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden258">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,40 +116,42 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>3 震</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>3 震</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden34">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden34">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden34">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div id="case5" class="block" style="background-color: cornsilk;">
+                <div id="case5" class="block" style="background-color: aliceblue;">
                     <table>
                         <tbody>
                             <tr>
-                                <td>5</td>
-                                <td></td>
-                                <td></td>
+                                <td><strong>5</strong></td>
+                                <td class="hidden258">x</td>
+                                <td class="hidden258">x</td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="hidden258">x</td>
+                                <td class="hidden258">x</td>
+                                <td class="hidden258">x</td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="hidden258">x</td>
+                                <td class="hidden258">x</td>
+                                <td class="hidden258">x</td>
                             </tr>
                         </tbody>
                     </table>
@@ -134,19 +160,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>7 兑</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>7 兑</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden67">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden67">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden67">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -155,19 +183,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>8 艮</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>8 艮</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden258">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden258">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden258">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -176,19 +206,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>1 坎</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>1 坎</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden1">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden1">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden1">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -197,19 +229,21 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td>6 乾</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td>
+                                    <strong>6 乾</strong>
+                                </td>
+                                <td id="shen">shen</td>
+                                <td class="hidden67">x</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden67">x</td>
+                                <td id="men">men</td>
+                                <td id="tianPan">tianpan</td>
                             </tr>
                             <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
+                                <td class="hidden67">x</td>
+                                <td id="xing">xing</td>
+                                <td id="dipan">dipan</td>
                             </tr>
                         </tbody>
                     </table>
@@ -219,7 +253,6 @@
         </div>
 
     </div>
-
 
 </body>
 

@@ -30,6 +30,7 @@ body {
     width: 160px;
     height: 160px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 #body .line {
@@ -80,4 +81,19 @@ body {
 table {
     width: 100%;
     height: 100%;
+}
+.hidden34{
+    color: #8BC34A;
+}
+.hidden258{
+    color: aliceblue;
+}
+.hidden67{
+    color: #FFEB3B;
+}
+.hidden1{
+    color: #03A9F4;
+}
+.hidden9{
+    color:  #F44336;
 }
