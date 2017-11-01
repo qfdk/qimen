@@ -78,20 +78,20 @@ function SolarTerm(DateGL) {
     console.log(SolarTermStr[M-1],SolarTermStr[M]);
 
     var JQ = "二十四节气";
-    if (DateGL.getDate() == BeginTime.getDate()) {
-        JQ += "    今日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
-        JQ += "　 明日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
-        JQ += "　 后日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else {
-        JQ = " 二十四节气";
-        if (DateGL.getMonth() == BeginTime.getMonth()) {
-            JQ += " 本月";
-        } else {
-            JQ += " 下月";
-        }
-        JQ += BeginTime.getDate() + "日" + "<font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    }
+    // if (DateGL.getDate() == BeginTime.getDate()) {
+    //     JQ += "    今日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    // } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
+    //     JQ += "　 明日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    // } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
+    //     JQ += "　 后日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    // } else {
+    //     JQ = " 二十四节气";
+    //     if (DateGL.getMonth() == BeginTime.getMonth()) {
+    //         JQ += " 本月";
+    //     } else {
+    //         JQ += " 下月";
+    //     }
+    //     JQ += BeginTime.getDate() + "日" + "<font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    // }
     return JQ;
 }
