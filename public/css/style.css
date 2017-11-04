@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding-bottom: 20px;
     padding-top: 60px;
+    background-color: #E0E0E0;
 }
 
 h1 {
@@ -94,14 +95,16 @@ table {
 .ptb td.r0t2 {width:49px;height:47px; border-top:#443 2px solid;}
 .ptb td div {position:relative;top:0;left:0; width:49px; height:47px;}
 
-.ptb .sr { font-size:20px; border:solid 1px #ffffff!important;color: red;margin:0px;}
-.ptb .K0 { font-size:20px; border:solid 1px #ffffff!important;color: #7777dd;margin:0px;}
+.ptb .sr { font-size:20px;color: red;margin:0px;}
+.ptb .K0 { font-size:20px;color: #7777dd;margin:0px;}
+.ptb .diPanDiZhi { font-size:20px;color: #443;margin:0px;}
+
 .ptb .gua { font-size:20px; border:solid 1px #ffffff!important;margin:0px;}
 .jin{color: #FF9800;}
 .mu{color: #4CAF50;}
 .shui{color: #03A9F4;}
 .huo{color: #9C27B0;}
-.tu{color: #607D8B;}
+.tu{color: #795548;}
 
 .trh { height: 48px;vertical-align:middle!important}
 .RankTb {width: 441px;}

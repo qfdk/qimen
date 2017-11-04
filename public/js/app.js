@@ -1,20 +1,13 @@
 /**
- * Created by qfdk on 16/2/21.
+ * Created by qfdk on 17/11/05.
  */
-$(document).ready(function(){
-    $.get('/getInfo', function (data) {
-        $('#email').text(data.email);
-        $('#status').text(data.status);
-        setTimeout(function(){
-            $.get('/getInfoServer', function (data, status) {
-                $('#name').text(data.name);
-                $('#memory').text(data.memory);
-                $('#kernel').text(data.kernel);
-            });
-        },100);
+$(document).ready(function () {
+    $.get('/getJieQi', function (data) {
+        var json = JSON.parse(data);
+        $('#jieQi').text(json.msg);
+        var diZhi = json.diPanDiZhi;
+        for (var dz in diZhi) {
+            $('#diPanDiZhi' + dz).text(diZhi[dz]);
+        }
     });
 });
-
-function load() {
-    alert('coucou');
-}
