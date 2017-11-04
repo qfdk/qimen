@@ -2,48 +2,73 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>奇门遁甲排盘（茅山派）</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="body">
-            <div class="grid">
-                <h3>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">奇门遁甲排盘</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">主页</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+            </ul>
+            <p class="navbar-text">
+                <span class="label label-info">
                     <%= time %>
-                        <br>
-                        <span class="label label-primary">
-                            <%= year %>
-                        </span> 年
-                        <span class="label label-primary">
-                            <%= month %>
-                        </span> 月
-                        <span class="label label-primary">
-                            <%= date %>
-                        </span> 日
-                        <span class="label label-primary">
-                            <%= hour %>
-                        </span> 时
-                        <br>
-                        <span class="label label-warning">
-                            <%= wuxing.year %>
-                        </span> 年
-                        <span class="label label-warning">
-                            <%= wuxing.month %>
-                        </span> 月
-                        <span class="label label-warning">
-                            <%= wuxing.date %>
-                        </span> 日
-                        <span class="label label-warning">
-                            <%= wuxing.hour %>
-                        </span> 时
-                </h3>
-                <div id="case4" class="block" style="background-color: #8BC34A;">
+                </span>&nbsp;=>
+                <span class="label label-primary">
+                    <%= year %>
+                </span>&nbsp;年
+                <span class="label label-primary">
+                    <%= month %>
+                </span>&nbsp;月
+                <span class="label label-primary">
+                    <%= date %>
+                </span>&nbsp;日
+                <span class="label label-primary">
+                    <%= hour %>
+                </span>&nbsp;时
+            </p>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div class="container">
+        <section id="maxheight">
+            <div id="gris1" class="container">
+                <div class="padding box" style="background: white;">
+                </div>
+                <div id="case4" style="background-color: #8BC34A;" class="padding box">
                     <table>
                         <tbody>
                             <tr>
@@ -66,7 +91,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case9" class="block" style="background-color: #F44336;">
+                <div id="case9" style="background-color: #F44336;" class="padding box">
                     <table>
                         <tbody>
                             <tr>
@@ -89,7 +114,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case2" class="block" style="background-color: aliceblue;">
+                <div id="case2" class="padding box" style="background-color:#9E9E9E;">
                     <table>
                         <tbody>
                             <tr>
@@ -112,7 +137,14 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case3" class="block" style="background-color: #8BC34A;">
+                <div class="padding box" style="background: white; font-size:16px">
+                    <%- jieqi %>
+                </div>
+            </div>
+            <div id="gris2" class="container">
+                <div class="padding box" style="background: white;">
+                </div>
+                <div id="case3" class="padding box" style="background-color: #8BC34A;">
                     <table>
                         <tbody>
                             <tr>
@@ -135,28 +167,10 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case5" class="block" style="background-color: aliceblue;">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><strong>5</strong></td>
-                                <td class="hidden258">x</td>
-                                <td class="hidden258">x</td>
-                            </tr>
-                            <tr>
-                                <td class="hidden258">x</td>
-                                <td class="hidden258">x</td>
-                                <td class="hidden258">x</td>
-                            </tr>
-                            <tr>
-                                <td class="hidden258">x</td>
-                                <td class="hidden258">x</td>
-                                <td class="hidden258">x</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="case5" class="padding box" style="background-color:#9E9E9E;">
+                    5
                 </div>
-                <div id="case7" class="block" style="background-color: #FFEB3B;">
+                <div id="case7" class="padding box" style="background-color: #FFEB3B;">
                     <table>
                         <tbody>
                             <tr>
@@ -179,7 +193,14 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case8" class="block" style="background-color: aliceblue;">
+                <div class="padding box" style="background: white;">
+                </div>
+            </div>
+
+            <div id="gris3" class="container">
+                <div class="padding box" style="background: white;">
+                </div>
+                <div id="case8" class="padding box" style="background-color:#9E9E9E;">
                     <table>
                         <tbody>
                             <tr>
@@ -202,7 +223,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case1" class="block" style="background-color: #03A9F4;">
+                <div id="case1" class="padding box" style="background-color: #03A9F4;">
                     <table>
                         <tbody>
                             <tr>
@@ -225,7 +246,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="case6" class="block" style="background-color: #FFEB3B;">
+                <div id="case6" class="padding box" style="background-color: #FFEB3B;">
                     <table>
                         <tbody>
                             <tr>
@@ -248,12 +269,22 @@
                         </tbody>
                     </table>
                 </div>
-
+                <div class="padding box" style="background: white;">
+                </div>
             </div>
-        </div>
-
+        </section>
     </div>
-
+    <footer id="footer">
+        <div class="container text-center">
+            <hr>
+            <span>Powered by</span>
+            <a href="https://qfdk.me" target="_blank">qfdk &nbsp;</a>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -34,7 +34,8 @@ app.get('/', function (req, res) {
         month: bazi.month,
         date: bazi.date,
         hour: bazi.hour,
-        wuxing: WanNianLi.getResult(lunar).wuxing
+        wuxing: WanNianLi.getResult(lunar).wuxing,
+        jieqi: SolarTerm(now)
     });
 });
 
@@ -75,23 +76,23 @@ function SolarTerm(DateGL) {
         M == 23 ? M = 0 : M++;
     }
 
-    console.log(SolarTermStr[M-1],SolarTermStr[M]);
+    // console.log(SolarTermStr[M - 1], SolarTermStr[M]);
 
-    var JQ = "二十四节气";
-    // if (DateGL.getDate() == BeginTime.getDate()) {
-    //     JQ += "    今日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    // } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
-    //     JQ += "　 明日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    // } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
-    //     JQ += "　 后日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    // } else {
-    //     JQ = " 二十四节气";
-    //     if (DateGL.getMonth() == BeginTime.getMonth()) {
-    //         JQ += " 本月";
-    //     } else {
-    //         JQ += " 下月";
-    //     }
-    //     JQ += BeginTime.getDate() + "日" + "<font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    // }
+    var JQ = "";
+    if (DateGL.getDate() == BeginTime.getDate()) {
+        JQ += "    今日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
+        JQ += "　 明日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
+        JQ += "　 后日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    } else {
+        JQ = " 二十四节气";
+        if (DateGL.getMonth() == BeginTime.getMonth()) {
+            JQ += " 本月";
+        } else {
+            JQ += " 下月";
+        }
+        JQ += BeginTime.getDate() + "日" + "<font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
+    }
     return JQ;
 }
