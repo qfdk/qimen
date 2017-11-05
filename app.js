@@ -5,8 +5,52 @@ var WanNianLi = require('./lib/wuxing');
 var calendar = require('./lib/calendar');
 var LunarCalendar = require('lunar-calendar');
 var diPanDiZhi = new Array("戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙");
+var xunShouList = {
+    "甲子": "戊",
+    "甲戊": "已",
+    "甲申": "庚",
+    "甲午": "辛",
+    "甲辰": "壬",
+    "甲寅": "癸"
+}
+var diPan = {
+    "6": "乾",
+    "1": "坎",
+    "8": "艮",
+    "3": "震",
+    "4": "巽",
+    "9": "离",
+    "2": "坤",
+    "7": "兑"
+}
+var men = {
+    "6": "开门",
+    "1": "休门",
+    "8": "生门",
+    "3": "伤门",
+    "4": "杜门",
+    "9": "景门",
+    "2": "死门",
+    "7": "惊门"
+}
+
+var xing = {
+    "6": "天心",
+    "1": "天蓬",
+    "8": "天任",
+    "3": "天冲",
+    "4": "天辅",
+    "9": "天英",
+    "2": "天芮",
+    "7": "天柱"
+}
+
 // 现时
 var now = new Date();
+
+var qimen = {
+
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +70,11 @@ app.get('/', function (req, res) {
     lunar.hour = hour;
     // 四柱
     var bazi = WanNianLi.getResult(lunar).bazi;
+    // 甲子列表
+    var jiazi = WanNianLi.getResult(lunar).jiazi;
+    // 旬首
+    var xunShou = jiazi[jiazi.indexOf(bazi.hour) - (jiazi.indexOf(bazi.hour) % 10) + 1];
+    qimen["xunShou"] = xunShouList[xunShou];
 
     res.render('index', {
         time: now.toLocaleString(),
@@ -33,12 +82,18 @@ app.get('/', function (req, res) {
         month: bazi.month,
         date: bazi.date,
         hour: bazi.hour,
-        wuxing: WanNianLi.getResult(lunar).wuxing
+        wuxing: WanNianLi.getResult(lunar).wuxing,
+        xunshou: xunShou + "-" + xunShouList[xunShou]
     });
 });
 
 app.get('/getJieQi', function (req, res) {
     res.send(SolarTerm(now));
+});
+
+app.get('/getInfo', function (req, res) {
+    console.log(getXing())
+    res.send(qimen);
 });
 
 app.listen(3000, function () {
@@ -120,8 +175,10 @@ function SolarTerm(DateGL) {
         msg: res,
         diPanDiZhi: getDiPanDiZhi(data[1] + "-" + data[2].split("")[yuan])
     }
+    qimen["diPanDiZhi"] = getDiPanDiZhi(data[1] + "-" + data[2].split("")[yuan]);
     return JSON.stringify(tmp);
 }
+
 /**
  * 阴阳遁-局数
  * yin/yang-N
@@ -150,4 +207,16 @@ function getDiPanDiZhi(info) {
         }
     }
     return result;
+}
+
+function getXing() {
+    for (var dizhi in qimen["diPanDiZhi"]) {
+        if (qimen["diPanDiZhi"][dizhi] == qimen['xunShou']) {
+            return xing[dizhi];
+        }
+    }
+    var tianPanXing={
+
+    }
+    
 }

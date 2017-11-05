@@ -5,68 +5,6 @@ body {
     background-color: #E0E0E0;
 }
 
-h1 {
-    text-align: center;
-}
-
-section {
-    padding-bottom: 20px;
-}
-
-section:last-child {
-    border: none;
-}
-
-section:after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
-.box {
-    position: relative;
-    float: left;
-    width: 20%;
-    text-align: center;
-    font-size: 16px;
-    font-size: 2vw;
-    background: orange;
-    overflow: hidden;
-}
-
-#viewwidth .box,
-.viewwidth.box {
-    height: 20vw;
-}
-
-#padding .box,
-.padding.box {
-    padding-bottom: 20%;
-}
-
-#margin .box:after,
-.margin.box:after {
-    content: '';
-    display: block;
-    margin-top: 100%;
-}
-
-#maxheight .box {
-    max-height: 2em;
-}
-
-#maxheight .box:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-}
-
-table {
-    width: 100%;
-    height: 100%;
-}
 .hidden34{
     color: #8BC34A;
 }
@@ -82,7 +20,14 @@ table {
 .hidden9{
     color:  #F44336;
 }
-.ptb { margin:0; padding:0; clear:both; border:#443 3px solid; table-layout: fixed;width: 441px; height:441px; background-color:#fff;}
+.ptb { 
+    margin:0; 
+    padding:0; 
+    clear:both; 
+    border:#443 3px solid; 
+    /* table-layout: fixed;
+    width: 441px; height:441px;  */
+    background-color:#fff;}
 .ptb td {text-align: center; overflow: hidden;vertical-align:middle!important;}
 .ptb td.r1t0 {width:48px;height:48px;/* border-right:#999 1px solid; */}
 .ptb td.r2t0 {width:47px;height:48px; border-right:#443 2px solid;}
@@ -93,11 +38,12 @@ table {
 .ptb td.r1t2 {width:48px;height:47px;/* border-right:#999 1px solid; */border-top:#443 2px solid;}
 .ptb td.r2t2 {width:47px;height:47px; border-right:#443 2px solid; border-top:#443 2px solid;}
 .ptb td.r0t2 {width:49px;height:47px; border-top:#443 2px solid;}
-.ptb td div {position:relative;top:0;left:0; width:49px; height:47px;}
+/* .ptb td div {position:relative;top:0;left:0; width:49px; height:47px;} */
 
 .ptb .sr { font-size:20px;color: red;margin:0px;}
 .ptb .K0 { font-size:20px;color: #7777dd;margin:0px;}
 .ptb .diPanDiZhi { font-size:20px;color: #443;margin:0px;}
+.ptb .xing { font-size:20px;color: rgb(179, 179, 0);margin:0px;}
 
 .ptb .gua { font-size:20px; border:solid 1px #ffffff!important;margin:0px;}
 .jin{color: #FF9800;}
@@ -107,5 +53,9 @@ table {
 .tu{color: #795548;}
 
 .trh { height: 48px;vertical-align:middle!important}
-.RankTb {width: 441px;}
-.pz { width:457px;margin:auto;}
+
+.pz { 
+    width:434px;    
+    margin-right: auto;
+    margin-left: auto;
+}
