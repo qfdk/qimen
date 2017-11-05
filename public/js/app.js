@@ -48,7 +48,10 @@ $(document).ready(function () {
     });
     $.get('/getInfo', function (data) {
         var index = $('.diPanDiZhi').text().split("").indexOf(data.xunShou);
-        console.log("值符",xing[index]);
-        console.log("值使",men[index]);
+        console.log("值符", xing[index]);
+        console.log("值使", men[index]);
+        for (var index in data.tianPanXing) {
+            $('#xing' + index).text(data.tianPanXing[index]);
+        }
     });
 });

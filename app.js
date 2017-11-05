@@ -4,7 +4,10 @@ var path = require('path');
 var WanNianLi = require('./lib/wuxing');
 var calendar = require('./lib/calendar');
 var LunarCalendar = require('lunar-calendar');
-var diPanDiZhi = new Array("戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙");
+var diPanDiZhiList = new Array("戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙");
+var diPanDiZhi = {
+
+}
 var xunShouList = {
     "甲子": "戊",
     "甲戊": "已",
@@ -42,9 +45,19 @@ var xing = {
     "4": "天辅",
     "9": "天英",
     "2": "天芮",
-    "7": "天柱"
+    "7": "天柱",
+    "5": "天禽"
 }
-
+var xingList = new Array(
+    "天心",
+    "天蓬",
+    "天任",
+    "天冲",
+    "天辅",
+    "天英",
+    "天芮",
+    "天柱"
+);
 // 现时
 var now = new Date();
 
@@ -75,7 +88,8 @@ app.get('/', function (req, res) {
     // 旬首
     var xunShou = jiazi[jiazi.indexOf(bazi.hour) - (jiazi.indexOf(bazi.hour) % 10) + 1];
     qimen["xunShou"] = xunShouList[xunShou];
-
+    qimen["shiGan"] = bazi.hour;
+    getXing();
     res.render('index', {
         time: now.toLocaleString(),
         year: bazi.year,
@@ -92,7 +106,6 @@ app.get('/getJieQi', function (req, res) {
 });
 
 app.get('/getInfo', function (req, res) {
-    console.log(getXing())
     res.send(qimen);
 });
 
@@ -191,32 +204,45 @@ function getDiPanDiZhi(info) {
     if (type == "yin") {
         for (var i = 0; i < 9; i++) {
             if (i < num) {
-                result[num - i] = diPanDiZhi[i];
+                result[num - i] = diPanDiZhiList[i];
 
             } else {
-                result[num - i + 9] = diPanDiZhi[i];
+                result[num - i + 9] = diPanDiZhiList[i];
             }
         }
     } else {
         for (var i = num; i < 9; i++) {
             if ((num + i) > 9) {
-                result[(num + i) % 9] = diPanDiZhi[i];
+                result[(num + i) % 9] = diPanDiZhiList[i];
             } else {
-                result[num + i] = diPanDiZhi[i];
+                result[num + i] = diPanDiZhiList[i];
             }
         }
     }
     return result;
 }
-
+/**
+ * 拿到星
+ */
 function getXing() {
+    var zhiFuXing = "";
     for (var dizhi in qimen["diPanDiZhi"]) {
         if (qimen["diPanDiZhi"][dizhi] == qimen['xunShou']) {
-            return xing[dizhi];
+            zhiFuXing = xing[dizhi];
         }
     }
-    var tianPanXing={
-
+    var shiGan = qimen["shiGan"].split("")[0];
+    var newLuoGong = "";
+    for (var t in qimen["diPanDiZhi"]) {
+        if (qimen["diPanDiZhi"][t] == shiGan) {
+            newLuoGong = t;
+        }
     }
-    
+    var old = xingList.indexOf(zhiFuXing);
+    var offset = newLuoGong - old;
+    var tianPanXing = {}
+    for (var i = 0; i < xingList.length; i++) {
+        tianPanXing[(i + offset + 8) % 8 + 1] = xingList[i];
+    }
+    qimen["tianPanXing"] = tianPanXing;
 }
