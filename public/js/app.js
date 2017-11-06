@@ -52,6 +52,10 @@ $(document).ready(function () {
         console.log("值使", men[index]);
         for (var index in data.tianPanXing) {
             $('#xing' + index).text(data.tianPanXing[index]);
+            if (data.tianPanXing[index] == "天芮") {
+                $('#tianqin' + index).text("天禽");
+                $('#wu' + index).text("　戊");
+            }
         }
     });
 });
