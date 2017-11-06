@@ -5,9 +5,7 @@ var WanNianLi = require('./lib/wuxing');
 var calendar = require('./lib/calendar');
 var LunarCalendar = require('lunar-calendar');
 var diPanDiZhiList = new Array("戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙");
-var diPanDiZhi = {
 
-}
 var xunShouList = {
     "甲子": "戊",
     "甲戊": "已",
@@ -59,7 +57,7 @@ var xingList = new Array(
     "天柱"
 );
 // 现时
-var now = new Date();
+var now;
 
 var qimen = {
 
@@ -74,6 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // index
 app.get('/', function (req, res) {
+    now = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var date = now.getDate();
