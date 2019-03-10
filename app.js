@@ -199,7 +199,7 @@ function SolarTerm(DateGL) {
 function getDiPanDiZhi(info) {
     var result = {};
     var type = info.split("-")[0];
-    var num = info.split("-")[1];
+    const num = info.split("-")[1];
     if (type == "yin") {
         // 阴遁 逆着排
         for (var i = 0; i < 9; i++) {
@@ -217,23 +217,14 @@ function getDiPanDiZhi(info) {
         result[num] = diPanDiZhiList[0];
 
         // 2. cas 1 - num
-
         for (var i = 1; i < num; i++) {
             result[i] = diPanDiZhiList[9 - num + i];
         }
 
         // 3. cas num - 9
-
         for (var i = num; i < 9; i++) {
-            result[i + 1] = diPanDiZhiList[i - num + 1];
+            result[parseInt(i)+1] = diPanDiZhiList[i - num + 1];
         }
-        // for (var i = num; i < 9; i++) {
-        // if ((num + i) > 9) {
-        //     result[(num + i) % 9] = diPanDiZhiList[i];
-        // } else {
-        //     result[num + i] = diPanDiZhiList[i];
-        // }
-        // }
 
     }
     return result;
