@@ -71,6 +71,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // index
 app.get('/', function (req, res) {
     now = new Date();
+    console.log(now.toLocaleString())
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var date = now.getDate();
@@ -88,7 +89,7 @@ app.get('/', function (req, res) {
     qimen["shiGan"] = bazi.hour;
     getXing();
     res.render('index', {
-        time: now.toLocaleString(),
+        time: year + '/' + month + '/' + date + ' ' + hour + ':' + now.getMinutes(),
         year: bazi.year,
         month: bazi.month,
         date: bazi.date,
@@ -124,7 +125,6 @@ app.listen(3000, function () {
  * @param {*现在时间} DateGL
  */
 function SolarTerm(DateGL) {
-    console.log(DateGL)
     var SolarTermStr = new Array(
         "小寒-yang-285", "大寒-yang-396", "立春-yang-852", "雨水-yang-963",
         "惊蛰-yang-174", "春分-yang-396", "清明-yang-417", "谷雨-yang-528",
@@ -160,8 +160,8 @@ function SolarTerm(DateGL) {
 
     var yuan = "";
     var res = ""
-    var diff = Math.floor((BeginTime.getTime() - DateGL.getTime()) / 86400000);
-
+    var diff = Math.ceil((BeginTime.getTime() - DateGL.getTime()) / 86400000);
+    console.log(diff)
     /**
      * 15 天一个循环
      * 1-5 上元 0
@@ -171,10 +171,10 @@ function SolarTerm(DateGL) {
     if (diff <= 5) {
         yuan = 0;
     }
-    if (diff > 5 && diff < 10) {
+    if (diff > 5 && diff <= 10) {
         yuan = 1;
     }
-    if (diff >= 10) {
+    if (diff > 10) {
         yuan = 2;
     }
     var data = SolarTermStr[M - 1].split("-");
@@ -223,7 +223,7 @@ function getDiPanDiZhi(info) {
 
         // 3. cas num - 9
         for (var i = num; i < 9; i++) {
-            result[parseInt(i)+1] = diPanDiZhiList[i - num + 1];
+            result[parseInt(i) + 1] = diPanDiZhiList[i - num + 1];
         }
 
     }

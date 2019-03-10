@@ -46,14 +46,14 @@ body {
 
 .ptb .sr { font-size:20px;color: red;margin:0px;}
 .ptb .K0 { font-size:20px;color: #7777dd;margin:0px;}
-.ptb .diPanDiZhi { font-size:20px;color: #443;margin:0px;}
-.ptb .xing { font-size:20px;color: rgb(179, 179, 0);margin:0px;}
+.ptb .diPanDiZhi { font-size:20px;margin:0px;}
+.ptb .xing { font-size:20px;margin:0px;}
 
 .ptb .gua { font-size:20px; border:solid 1px #ffffff!important;margin:0px;}
 .jin{color: #FF9800;}
 .mu{color: #4CAF50;}
 .shui{color: #03A9F4;}
-.huo{color: #9C27B0;}
+.huo{color: #F44336;}
 .tu{color: #795548;}
 
 .trh { height: 48px;vertical-align:middle!important}

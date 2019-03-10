@@ -32,6 +32,27 @@ var xing = {
     "2": "天芮",
     "7": "天柱"
 }
+var xingType = {
+    "天心": "jin",
+    "天蓬": "shui",
+    "天任": "tu",
+    "天冲": "mu",
+    "天辅": "mu",
+    "天英": "huo",
+    "天芮": "tu",
+    "天柱": "jin",
+}
+var dizhiType = {
+    "戊": 'tu',
+    "己": 'tu',
+    "庚": 'jin',
+    "辛": 'jin',
+    "壬": 'shui',
+    "癸": 'shui',
+    "丁": 'huo',
+    "丙": 'huo',
+    "乙": 'mu'
+};
 
 $(document).ready(function () {
     $.get('/getJieQi', function (data) {
@@ -43,20 +64,22 @@ $(document).ready(function () {
          */
         for (var dz in 地盘地支List) {
             $('#diPanDiZhi' + dz).text(地盘地支List[dz]);
+            $('#diPanDiZhi' + dz).addClass(dizhiType[地盘地支List[dz]]);
         }
 
     });
-    // $.get('/getInfo', function (data) {
-    //     var index = $('.diPanDiZhi').text().split("").indexOf(data.xunShou);
-    //     console.log(index)
-    //     console.log("值符", xing[index]);
-    //     console.log("值使", men[index]);
-    //     for (var index in data.tianPanXing) {
-    //         $('#xing' + index).text(data.tianPanXing[index]);
-    //         if (data.tianPanXing[index] == "天芮") {
-    //             $('#tianqin' + index).text("天禽");
-    //             $('#wu' + index).text("　戊");
-    //         }
-    //     }
-    // });
+    $.get('/getInfo', function (data) {
+        var index = $('.diPanDiZhi').text().split("").indexOf(data.xunShou);
+        console.log(index)
+        console.log("值符", xing[index]);
+        console.log("值使", men[index]);
+        for (var index in data.tianPanXing) {
+            $('#xing' + index).text(data.tianPanXing[index]);
+            $('#xing' + index).addClass(xingType[data.tianPanXing[index]]);
+            // if (data.tianPanXing[index] == "天芮") {
+            //     $('#tianqin' + index).text("天禽");
+            //     $('#wu' + index).text("　戊");
+            // }
+        }
+    });
 });
