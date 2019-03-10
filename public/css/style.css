@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding-bottom: 20px;
     padding-top: 60px;
-    background-color: #E0E0E0;
+    background-color: #fefff3eb;
 }
 
 .hidden34{
@@ -19,6 +19,10 @@ body {
 }
 .hidden9{
     color:  #F44336;
+}
+.containerTable{
+    padding-right: 0;
+    padding-left: 0; 
 }
 .ptb { 
     margin:0; 
