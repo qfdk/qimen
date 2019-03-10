@@ -4,7 +4,7 @@ var path = require('path');
 var WanNianLi = require('./lib/wuxing');
 var calendar = require('./lib/calendar');
 var LunarCalendar = require('lunar-calendar');
-var diPanDiZhiList = new Array("戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙");
+var diPanDiZhiList = ["戊", "己", "庚", "辛", "壬", "癸", "丁", "丙", "乙"];
 
 var xunShouList = {
     "甲子": "戊",
@@ -59,9 +59,7 @@ var xingList = new Array(
 // 现时
 var now;
 
-var qimen = {
-
-}
+var qimen = {}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -111,20 +109,22 @@ app.get('/getInfo', function (req, res) {
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
+
 /**
- * 阳遁： 
- * 冬至、惊蛰一七四，小寒二八五， 
- * 大寒、春分三九六，雨水九六三， 
- * 清明、立夏四一七，立春八五二， 
- * 谷雨、小满五二八，芒种六三九。 
- * 阴遁： 
- * 夏至、白露九三六，小暑八二五， 
- * 大暑、秋分七一四，立秋二五八， 
- * 寒露、立冬六九三，处暑一四七， 
+ * 阳遁：
+ * 冬至、惊蛰一七四，小寒二八五，
+ * 大寒、春分三九六，雨水九六三，
+ * 清明、立夏四一七，立春八五二，
+ * 谷雨、小满五二八，芒种六三九。
+ * 阴遁：
+ * 夏至、白露九三六，小暑八二五，
+ * 大暑、秋分七一四，立秋二五八，
+ * 寒露、立冬六九三，处暑一四七，
  * 霜降、小雪五八二，大雪四七一。
- * @param {*现在时间} DateGL 
+ * @param {*现在时间} DateGL
  */
 function SolarTerm(DateGL) {
+    console.log(DateGL)
     var SolarTermStr = new Array(
         "小寒-yang-285", "大寒-yang-396", "立春-yang-852", "雨水-yang-963",
         "惊蛰-yang-174", "春分-yang-396", "清明-yang-417", "谷雨-yang-528",
@@ -161,6 +161,7 @@ function SolarTerm(DateGL) {
     var yuan = "";
     var res = ""
     var diff = Math.floor((BeginTime.getTime() - DateGL.getTime()) / 86400000);
+
     /**
      * 15 天一个循环
      * 1-5 上元 0
@@ -170,10 +171,10 @@ function SolarTerm(DateGL) {
     if (diff <= 5) {
         yuan = 0;
     }
-    if (diff > 5 && diff <= 10) {
+    if (diff > 5 && diff < 10) {
         yuan = 1;
     }
-    if (diff > 10) {
+    if (diff >= 10) {
         yuan = 2;
     }
     var data = SolarTermStr[M - 1].split("-");
@@ -185,22 +186,22 @@ function SolarTerm(DateGL) {
 
     var tmp = {
         msg: res,
-        diPanDiZhi: getDiPanDiZhi(data[1] + "-" + data[2].split("")[yuan])
+        '地盘地支': getDiPanDiZhi(data[1] + "-" + data[2].split("")[yuan])
     }
-    qimen["diPanDiZhi"] = getDiPanDiZhi(data[1] + "-" + data[2].split("")[yuan]);
     return JSON.stringify(tmp);
 }
 
 /**
  * 阴阳遁-局数
  * yin/yang-N
- * @param {String} info 
+ * @param {String} info
  */
 function getDiPanDiZhi(info) {
     var result = {};
     var type = info.split("-")[0];
     var num = info.split("-")[1];
     if (type == "yin") {
+        // 阴遁 逆着排
         for (var i = 0; i < 9; i++) {
             if (i < num) {
                 result[num - i] = diPanDiZhiList[i];
@@ -210,16 +211,34 @@ function getDiPanDiZhi(info) {
             }
         }
     } else {
-        for (var i = num; i < 9; i++) {
-            if ((num + i) > 9) {
-                result[(num + i) % 9] = diPanDiZhiList[i];
-            } else {
-                result[num + i] = diPanDiZhiList[i];
-            }
+        // 阳遁 顺着排
+
+        // 1. cas
+        result[num] = diPanDiZhiList[0];
+
+        // 2. cas 1 - num
+
+        for (var i = 1; i < num; i++) {
+            result[i] = diPanDiZhiList[9 - num + i];
         }
+
+        // 3. cas num - 9
+
+        for (var i = num; i < 9; i++) {
+            result[i + 1] = diPanDiZhiList[i - num + 1];
+        }
+        // for (var i = num; i < 9; i++) {
+        // if ((num + i) > 9) {
+        //     result[(num + i) % 9] = diPanDiZhiList[i];
+        // } else {
+        //     result[num + i] = diPanDiZhiList[i];
+        // }
+        // }
+
     }
     return result;
 }
+
 /**
  * 拿到星
  */

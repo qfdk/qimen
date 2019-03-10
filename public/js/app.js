@@ -37,25 +37,26 @@ $(document).ready(function () {
     $.get('/getJieQi', function (data) {
         var json = JSON.parse(data);
         $('#jieQi').text(json.msg);
-        var diZhi = json.diPanDiZhi;
+        var 地盘地支List = json.地盘地支;
         /**
          * 地盘-地支
          */
-        for (var dz in diZhi) {
-            $('#diPanDiZhi' + dz).text(diZhi[dz]);
+        for (var dz in 地盘地支List) {
+            $('#diPanDiZhi' + dz).text(地盘地支List[dz]);
         }
 
     });
-    $.get('/getInfo', function (data) {
-        var index = $('.diPanDiZhi').text().split("").indexOf(data.xunShou);
-        console.log("值符", xing[index]);
-        console.log("值使", men[index]);
-        for (var index in data.tianPanXing) {
-            $('#xing' + index).text(data.tianPanXing[index]);
-            if (data.tianPanXing[index] == "天芮") {
-                $('#tianqin' + index).text("天禽");
-                $('#wu' + index).text("　戊");
-            }
-        }
-    });
+    // $.get('/getInfo', function (data) {
+    //     var index = $('.diPanDiZhi').text().split("").indexOf(data.xunShou);
+    //     console.log(index)
+    //     console.log("值符", xing[index]);
+    //     console.log("值使", men[index]);
+    //     for (var index in data.tianPanXing) {
+    //         $('#xing' + index).text(data.tianPanXing[index]);
+    //         if (data.tianPanXing[index] == "天芮") {
+    //             $('#tianqin' + index).text("天禽");
+    //             $('#wu' + index).text("　戊");
+    //         }
+    //     }
+    // });
 });
