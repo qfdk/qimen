@@ -56,6 +56,7 @@ var xingList = new Array(
     "天芮",
     "天柱"
 );
+
 // 现时
 var now;
 
