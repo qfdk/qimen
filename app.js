@@ -88,7 +88,6 @@ app.get('/', function (req, res) {
     var xunShou = jiazi[jiazi.indexOf(bazi.hour) - (jiazi.indexOf(bazi.hour) % 10) + 1];
     qimen["xunShou"] = xunShouList[xunShou];
     qimen["shiGan"] = bazi.hour;
-    getXing();
     res.render('index', {
         time: year + '/' + month + '/' + date + ' ' + hour + ':' + now.getMinutes(),
         year: bazi.year,
@@ -229,30 +228,4 @@ function getDiPanDiZhi(info) {
 
     }
     return result;
-}
-
-/**
- * 拿到星
- */
-function getXing() {
-    var zhiFuXing = "";
-    for (var dizhi in qimen["diPanDiZhi"]) {
-        if (qimen["diPanDiZhi"][dizhi] == qimen['xunShou']) {
-            zhiFuXing = xing[dizhi];
-        }
-    }
-    var shiGan = qimen["shiGan"].split("")[0];
-    var newLuoGong = "";
-    for (var t in qimen["diPanDiZhi"]) {
-        if (qimen["diPanDiZhi"][t] == shiGan) {
-            newLuoGong = t;
-        }
-    }
-    var old = xingList.indexOf(zhiFuXing);
-    var offset = newLuoGong - old;
-    var tianPanXing = {}
-    for (var i = 0; i < xingList.length; i++) {
-        tianPanXing[(i + offset + 8) % 8 + 1] = xingList[i];
-    }
-    qimen["tianPanXing"] = tianPanXing;
 }
