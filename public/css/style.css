@@ -22,13 +22,13 @@ body {
 }
 .containerTable{
     padding-right: 0;
-    padding-left: 0; 
+    padding-left: 0;
 }
-.ptb { 
-    margin:0; 
-    padding:0; 
-    clear:both; 
-    border:#443 3px solid; 
+.ptb {
+    margin:0;
+    padding:0;
+    clear:both;
+    border:#443 3px solid;
     /* table-layout: fixed;
     width: 441px; height:441px;  */
     background-color:#fff;}
@@ -58,8 +58,8 @@ body {
 
 .trh { height: 48px;vertical-align:middle!important}
 
-.pz { 
-    width:434px;    
+.pz {
+    width:434px;
     margin-right: auto;
     margin-left: auto;
 }

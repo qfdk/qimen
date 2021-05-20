@@ -4,6 +4,7 @@
   "description": "QiMenDunjia",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "lunar-calendar": "^0.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
