@@ -5,62 +5,13 @@ const WanNianLi = require('./lib/wuxing');
 const calendar = require('./lib/calendar');
 const diPanDiZhiList = ['戊', '己', '庚', '辛', '壬', '癸', '丁', '丙', '乙'];
 
-// 旬首
-const xunShouList = {
-    '甲子': '戊',
-    '甲戊': '已',
-    '甲申': '庚',
-    '甲午': '辛',
-    '甲辰': '壬',
-    '甲寅': '癸',
-};
-
-// 地盘
-const diPan = {
-    '6': '乾',
-    '1': '坎',
-    '8': '艮',
-    '3': '震',
-    '4': '巽',
-    '9': '离',
-    '2': '坤',
-    '7': '兑',
-};
-
-// 八门
-const men = {
-    '6': '开门',
-    '1': '休门',
-    '8': '生门',
-    '3': '伤门',
-    '4': '杜门',
-    '9': '景门',
-    '2': '死门',
-    '7': '惊门',
-};
-// 九星
-const xing = {
-    '6': '天心',
-    '1': '天蓬',
-    '8': '天任',
-    '3': '天冲',
-    '4': '天辅',
-    '9': '天英',
-    '2': '天芮',
-    '7': '天柱',
-    '5': '天禽',
-};
-
-const xingList = [
-    '天心',
-    '天蓬',
-    '天任',
-    '天冲',
-    '天辅',
-    '天英',
-    '天芮',
-    '天柱',
-];
+const {
+    xunShouList,
+    diPan,
+    men,
+    xing,
+    xingList
+} = require('./lib/constants');
 
 // 现时
 let now;
@@ -79,13 +30,13 @@ const getTimeDetail = (now) => {
     const month = now.getMonth() + 1;
     const date = now.getDate();
     const hour = now.getHours();
-    return {year, month, date, hour};
+    return { year, month, date, hour };
 };
 
 // index
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     now = new Date();
-    const {year, month, date, hour} = getTimeDetail(now);
+    const { year, month, date, hour } = getTimeDetail(now);
     // 农历
     const lunar = calendar.solar2lunar(year, month, date);
     lunar.hour = hour;
@@ -108,15 +59,15 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/getJieQi', function(req, res) {
+app.get('/getJieQi', function (req, res) {
     res.send(SolarTerm(now));
 });
 
-app.get('/getInfo', function(req, res) {
+app.get('/getInfo', function (req, res) {
     res.send(qimen);
 });
 
-app.listen(3000, function() {
+app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
 
