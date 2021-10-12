@@ -6,10 +6,7 @@ const calendar = require('./lib/calendar');
 
 const {xunShouList, diPanDiZhiList, diPan, men, xing, xingList} = require('./lib/constants');
 
-// 现时
-let now;
-
-var qimen = {};
+const qimen = {};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,17 +15,17 @@ app.engine('html', require('ejs').renderFile);
 // public files
 app.use(express.static(path.join(__dirname, 'public')));
 
-const timeDetail = (now) => {
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const date = now.getDate();
-    const hour = now.getHours();
+const timeDetail = (inputDate) => {
+    const year = inputDate.getFullYear();
+    const month = inputDate.getMonth() + 1;
+    const date = inputDate.getDate();
+    const hour = inputDate.getHours();
     return {year, month, date, hour};
 };
 
 // index
-app.get('/', function(req, res) {
-    now = new Date();
+app.get('/', (req, res) => {
+    const now = new Date();
     const {year, month, date, hour} = timeDetail(now);
     // 农历
     const lunar = calendar.solar2lunar(year, month, date);
@@ -43,7 +40,7 @@ app.get('/', function(req, res) {
     qimen['旬首'] = xunShouList[xunShou];
     qimen['时干'] = bazi.hour;
     set天盘星();
-    SolarTerm(now);
+    set局数(now);
     res.render('index', {
         time: year + '/' + month + '/' + date + ' ' + hour + ':' + now.getMinutes(),
         bazi,
@@ -52,11 +49,11 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/getInfo', function(req, res) {
+app.get('/getInfo', (req, res) => {
     res.json(qimen);
 });
 
-app.listen(3000, function() {
+app.listen(3000, () => {
     console.log('Example app listening on port 3000!');
 });
 
@@ -73,8 +70,8 @@ app.listen(3000, function() {
  * 霜降、小雪五八二，大雪四七一。
  * @param {*现在时间} DateGL
  */
-function SolarTerm(inputDate) {
-    const SolarTermStr = [
+const set局数 = (inputDate) => {
+    const JuMapping = [
         '小寒-yang-285', '大寒-yang-396', '立春-yang-852', '雨水-yang-963',
         '惊蛰-yang-174', '春分-yang-396', '清明-yang-417', '谷雨-yang-528',
         '立夏-yang-417', '小满-yang-528', '芒种-yang-639', '夏至-yin-936',
@@ -108,7 +105,7 @@ function SolarTerm(inputDate) {
     }
 
     let yuan = '';
-    let res = '';
+    let ju = '';
     let diff = Math.ceil((BeginTime.getTime() - inputDate.getTime()) / 86400000);
 
     /**
@@ -126,15 +123,15 @@ function SolarTerm(inputDate) {
     if (diff > 10) {
         yuan = 2;
     }
-    let data = SolarTermStr[M - 1].split('-');
+    let data = JuMapping[M - 1].split('-');
     if (data[1] == 'yin') {
-        res = '阴遁' + data[2].split('')[yuan] + ' 局';
+        ju = '阴遁' + data[2].split('')[yuan] + ' 局';
     } else {
-        res = '阳遁' + data[2].split('')[yuan] + ' 局';
+        ju = '阳遁' + data[2].split('')[yuan] + ' 局';
     }
     qimen['地盘地支'] = getDiPanDiZhi(data[1] + '-' + data[2].split('')[yuan]);
-    qimen['局'] = res;
-}
+    qimen['局'] = ju;
+};
 
 /**
  * 阴阳遁-局数
@@ -179,25 +176,25 @@ const getDiPanDiZhi = (info) => {
 /**
  * 拿到星
  */
-function set天盘星() {
-    var zhiFuXing = '';
-    for (var dizhi in qimen['地盘地支']) {
+const set天盘星 = () => {
+    let zhiFuXing = '';
+    for (const dizhi in qimen['地盘地支']) {
         if (qimen['地盘地支'][dizhi] == qimen['旬首']) {
             zhiFuXing = xing[dizhi];
         }
     }
-    var shiGan = qimen['时干'].split('')[0];
-    var newLuoGong = '';
-    for (var t in qimen['地盘地支']) {
+    const shiGan = qimen['时干'].split('')[0];
+    let newLuoGong = '';
+    for (const t in qimen['地盘地支']) {
         if (qimen['地盘地支'][t] == shiGan) {
             newLuoGong = t;
         }
     }
-    var old = xingList.indexOf(zhiFuXing);
-    var offset = newLuoGong - old;
-    var tianPanXing = {};
-    for (var i = 0; i < xingList.length; i++) {
+    const old = xingList.indexOf(zhiFuXing);
+    const offset = newLuoGong - old;
+    const tianPanXing = {};
+    for (let i = 0; i < xingList.length; i++) {
         tianPanXing[(i + offset + 8) % 8 + 1] = xingList[i];
     }
     qimen['天盘星'] = tianPanXing;
-}
+};
