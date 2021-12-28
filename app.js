@@ -155,7 +155,7 @@ const set局数 = (inputDate) => {
 
     let yuan = '';
     let ju = '';
-    let diff = Math.ceil((BeginTime.getTime() - inputDate.getTime()) / 86400000);
+    let diff = Math.ceil((inputDate.getTime() - BeginTime.getTime()) / 86400000);
 
     /**
      * 15 天一个循环
