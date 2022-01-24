@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const HuangLi = require('./lib/wuxing');
-const calendar = require('./lib/calendar');
 
-const {xunShouList, diPanDiZhiList, diPan, men, xing, xingList} = require('./lib/constants');
+const {Lunar, Solar} = require('lunar-javascript');
+const {xunShouMap, diPanDiZhiList, xing, xingList} = require('./lib/constants');
+
+const LUNAR = Lunar.fromDate(new Date());
+const SOLAR = Solar.fromDate(new Date());
 
 const qimen = {};
 
@@ -23,29 +25,39 @@ const timeDetail = (inputDate) => {
     return {year, month, date, hour};
 };
 
+/**
+ * 获取四柱
+ * @param date 时间 new Date()
+ */
+const getSiZhu = () => {
+    return {
+        year: LUNAR.getYearInGanZhi(),
+        month: LUNAR.getMonthInGanZhi(),
+        day: LUNAR.getDayInGanZhi(),
+        time: LUNAR.getTimeInGanZhi()
+    };
+};
+
+const getXunshou = () => {
+    return LUNAR.getTimeXun();
+};
+
 // index
 app.get('/', (req, res) => {
-    const now = new Date();
-    const {year, month, date, hour} = timeDetail(now);
-    // 农历
-    const lunar = calendar.solar2lunar(year, month, date);
-    lunar.hour = hour;
+    // 获取当时四柱
+    const sizhu = getSiZhu();
 
-    // 四柱
-    const bazi = HuangLi.getResult(lunar).bazi;
-    // 甲子列表
-    const jiazi = HuangLi.getResult(lunar).jiazi.filter(e => e);
     // 旬首
-    const xunShou = jiazi[jiazi.indexOf(bazi.hour) - (jiazi.indexOf(bazi.hour) % 10)];
-    qimen['旬首'] = xunShouList[xunShou];
-    qimen['时干'] = bazi.hour;
-    set天盘星();
-    set局数(now);
+    const xunShou = getXunshou();
+    qimen['旬首'] = xunShouMap[xunShou];
+    qimen['时干'] = sizhu.hour;
+
+    // set天盘星();
+    // set局数(now);
     res.render('index', {
-        time: year + '/' + month + '/' + date + ' ' + hour + ':' + now.getMinutes(),
-        bazi,
-        wuxing: HuangLi.getResult(lunar).wuxing,
-        xunshou: xunShou + '-' + xunShouList[xunShou]
+        time: SOLAR.toFullString(),
+        sizhu,
+        xunshou: xunShou + '-' + xunShouMap[xunShou]
     });
 });
 
@@ -56,57 +68,6 @@ app.get('/getInfo', (req, res) => {
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!');
 });
-
-function SolarTerm(DateGL) {
-    var SolarTermStr = new Array(
-        "小寒", "大寒", "立春", "雨水", "惊蛰", "春分",
-        "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
-        "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
-        "寒露", "霜降", "立冬", "小雪", "大雪", "冬至");
-    var DifferenceInMonth = new Array(
-        1272060, 1275495, 1281180, 1289445, 1299225, 1310355,
-        1321560, 1333035, 1342770, 1350855, 1356420, 1359045,
-        1358580, 1355055, 1348695, 1340040, 1329630, 1318455,
-        1306935, 1297380, 1286865, 1277730, 1274550, 1271556);
-    var DifferenceInYear = 31556926;
-    var BeginTime = new Date(1901 / 1 / 1);
-    BeginTime.setTime(947120460000);
-    for (; DateGL.getFullYear() < BeginTime.getFullYear();) {
-        BeginTime.setTime(BeginTime.getTime() - DifferenceInYear * 1000);
-    }
-    for (; DateGL.getFullYear() > BeginTime.getFullYear();) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInYear * 1000);
-    }
-    for (var M = 0; DateGL.getMonth() > BeginTime.getMonth(); M++) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
-    }
-    if (DateGL.getDate() > BeginTime.getDate()) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
-        M++;
-    }
-    if (DateGL.getDate() > BeginTime.getDate()) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
-        M == 23 ? M = 0 : M++;
-    }
-    console.log(M);
-    var JQ = "二十四节气";
-    if (DateGL.getDate() == BeginTime.getDate()) {
-        JQ += "    今日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else if (DateGL.getDate() == BeginTime.getDate() - 1) {
-        JQ += "　 明日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else if (DateGL.getDate() == BeginTime.getDate() - 2) {
-        JQ += "　 后日 <font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    } else {
-        JQ = " 二十四节气";
-        if (DateGL.getMonth() == BeginTime.getMonth()) {
-            JQ += " 本月";
-        } else {
-            JQ += " 下月";
-        }
-        JQ += BeginTime.getDate() + "日" + "<font color='#598F03'><b>" + SolarTermStr[M] + "</b></font>";
-    }
-    return JQ;
-}
 
 /**
  * 阳遁：
@@ -119,7 +80,8 @@ function SolarTerm(DateGL) {
  * 大暑、秋分七一四，立秋二五八，
  * 寒露、立冬六九三，处暑一四七，
  * 霜降、小雪五八二，大雪四七一。
- * @param {*现在时间} DateGL
+ * 茅山法 15日 按照节气来
+ * @param {*现在时间} inputDate
  */
 const set局数 = (inputDate) => {
     const JuMapping = [
