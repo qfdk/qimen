@@ -69,10 +69,12 @@ $(document).ready(function() {
          * 地盘-地支
          */
         for (var dz in dipanDizhiList) {
+
             if (data['旬首'] === dipanDizhiList[dz]) {
                 console.log('值符', xing[dz]);
                 console.log('值使', men[dz]);
             }
+
             $('#diPanDiZhi' + dz).text(dipanDizhiList[dz]);
             $('#diPanDiZhi' + dz).addClass(dizhiType[dipanDizhiList[dz]]);
         }

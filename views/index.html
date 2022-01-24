@@ -20,343 +20,345 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">奇门遁甲排盘</a>
-        </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">奇门遁甲排盘</a>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">主页</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-            </ul>
-            <p class="navbar-text">
-                <span class="label label-info">
-                    <%= time %>
-                </span>&nbsp;=>
-                <span class="label label-primary">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="#">主页</a>
+            </li>
+            <li>
+                <a href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<div class="container">
+    <p class="text-center">
+            <span class="label label-primary">
                     <%= sizhu.year %>
                 </span>&nbsp;年
-                <span class="label label-primary">
+        <span class="label label-primary">
                     <%= sizhu.month %>
                 </span>&nbsp;月
-                <span class="label label-primary">
+        <span class="label label-primary">
                     <%= sizhu.day %>
                 </span>&nbsp;日
-                <span class="label label-primary">
+        <span class="label label-primary">
                     <%= sizhu.time %>
                 </span>&nbsp;时
 
-                <span class="label label-info">
+        <span class="label label-info">
                     旬首:
                     <%= xunshou %>
                 </span>
-            </p>
-        </div>
-        <!-- /.navbar-collapse -->
-    </nav>
-    <div class="container">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <table class="ptb" border="0" cellspacing="0" cellpadding="0">
-                <tbody>
-                <tr id="line1">
-                    <td class="r1t0">
-                        <p class="gua mu" id="k1s1">4 巽</p>
-                    </td>
-                    <td class="r1t0">
-                        <p class="K0" id="k2s1">&nbsp;</p>
-                    </td>
-                    <td class="r2t0">
-                        <p class="K0" id="k3s1">&nbsp;</p>
-                    </td>
-                    <td class="r1t0">
-                        <p class="gua huo" id="k4s1">9 离</p>
-                    </td>
-                    <td class="r1t0">
-                        <p class="sr" id="k5s1">&nbsp;</p>
-                    </td>
-                    <td class="r2t0">
-                        <p class="K0" id="k6s1">&nbsp;</p>
-                    </td>
-                    <td class="r1t0">
-                        <p class="gua tu" id="k7s1">2 坤</p>
-                    </td>
-                    <td class="r1t0">
-                        <p class="K0" id="k8s1">&nbsp;</p>
-                    </td>
-                    <td class="r0t0">
-                        <p class="sr" id="k9s1">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr id="line2">
-                    <td class="r1t1">
-                        <p class="sr" id="wu5">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing5">星</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi4">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="wu6">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing6">星</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi9">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="wu7">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing7">星</p>
-                    </td>
-                    <td class="r0t1">
-                        <p class="K0" id="tianPanDiZhi2">&nbsp;</p>
-                    </td>
-                </tr>
+    </p>
+    <p class="text-center">
+          <span class="label label-info">
+                    <%= time %>
+                </span>
+    </p>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <table class="ptb" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr id="line1">
+                <td class="r1t0">
+                    <p class="gua mu" id="k1s1">4 巽</p>
+                </td>
+                <td class="r1t0">
+                    <p class="K0" id="k2s1">&nbsp;</p>
+                </td>
+                <td class="r2t0">
+                    <p class="K0" id="k3s1">&nbsp;</p>
+                </td>
+                <td class="r1t0">
+                    <p class="gua huo" id="k4s1">9 离</p>
+                </td>
+                <td class="r1t0">
+                    <p class="sr" id="k5s1">&nbsp;</p>
+                </td>
+                <td class="r2t0">
+                    <p class="K0" id="k6s1">&nbsp;</p>
+                </td>
+                <td class="r1t0">
+                    <p class="gua tu" id="k7s1">2 坤</p>
+                </td>
+                <td class="r1t0">
+                    <p class="K0" id="k8s1">&nbsp;</p>
+                </td>
+                <td class="r0t0">
+                    <p class="sr" id="k9s1">&nbsp;</p>
+                </td>
+            </tr>
+            <tr id="line2">
+                <td class="r1t1">
+                    <p class="sr" id="wu5">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing5">星</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi4">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="wu6">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing6">星</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi9">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="wu7">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing7">星</p>
+                </td>
+                <td class="r0t1">
+                    <p class="K0" id="tianPanDiZhi2">&nbsp;</p>
+                </td>
+            </tr>
 
-                <tr id="line3">
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin5">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing5">星</p> -->
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi4">4&nbsp;</p>
-                    </td>
+            <tr id="line3">
+                <td class="r1t1">
+                    <p class="xing" id="tianqin5">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing5">星</p> -->
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi4">4&nbsp;</p>
+                </td>
 
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin6">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing6">星</p> -->
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi9">9&nbsp;</p>
-                    </td>
+                <td class="r1t1">
+                    <p class="xing" id="tianqin6">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing6">星</p> -->
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi9">9&nbsp;</p>
+                </td>
 
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin7">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing7">星</p> -->
-                    </td>
-                    <td class="r0t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi2">2&nbsp;</p>
-                    </td>
-                </tr>
-                <!--中间-->
-                <tr id="line4">
-                    <td class="r1t2">
-                        <p class="gua mu" id="k1s4">3 震</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="K0" id="k2s4">&nbsp;</p>
-                    </td>
-                    <td class="r2t2">
-                        <p class="sr" id="k3s4">&nbsp;</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="gua tu" id="k4s4">5 &nbsp;</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="K0" id="k5s4">&nbsp;</p>
-                    </td>
-                    <td class="r2t2">
-                        <p class="sr" id="k6s4">&nbsp;</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="gua jin" id="k7s4">7 兑</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="sr" id="k8s4">&nbsp;</p>
-                    </td>
-                    <td class="r0t2">
-                        <p class="sr" id="k9s4">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr id="line5">
-                    <td class="r1t1">
-                        <p class="sr" id="wu4">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing4">星</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi3">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="wu">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="k5s5">&nbsp;</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi5">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="wu8">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing8">星</p>
-                    </td>
-                    <td class="r0t1">
-                        <p class="K0" id="tianPanDiZhi7">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr id="line6">
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin4">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing4">星</p> -->
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi3">3&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="tianqinx">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xingx">&nbsp;</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi5">5&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin8">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing8">星</p> -->
-                    </td>
-                    <td class="r0t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi7">7&nbsp;</p>
-                    </td>
-                </tr>
-                <!--最下一行-->
-                <tr id="line7">
-                    <td class="r1t2">
-                        <p class="gua tu" id="k1s7">8 艮</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="K0" id="k2s7">&nbsp;</p>
-                    </td>
-                    <td class="r2t2">
-                        <p class="K0" id="k3s7">&nbsp;</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="gua shui" id="k4s7">1 坎</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="K0" id="k5s7">&nbsp;</p>
-                    </td>
-                    <td class="r2t2">
-                        <p class="sr" id="k6s7">&nbsp;</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="gua jin" id="k7s7">6 乾</p>
-                    </td>
-                    <td class="r1t2">
-                        <p class="K0" id="k8s7">&nbsp;</p>
-                    </td>
-                    <td class="r0t2">
-                        <p class="K0" id="k9s7">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr id="line8">
-                    <td class="r1t1">
-                        <p class="sr" id="wu3">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing3">星</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi8">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing2">星</p>
-                    </td>
-                    <td class="r2t1">
-                        <p class="K0" id="tianPanDiZhi1">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="sr" id="wu1">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="xing1">星</p>
-                    </td>
-                    <td class="r0t1">
-                        <p class="K0" id="tianPanDiZhi6">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr id="line9">
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin3">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing3">星</p> -->
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi8">8&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin2">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing2">星</p> -->
-                    </td>
-                    <td class="r2t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi1">1&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <p class="xing" id="tianqin1">&nbsp;</p>
-                    </td>
-                    <td class="r1t1">
-                        <!-- <p class="xing" id="xing1">星</p> -->
-                    </td>
-                    <td class="r0t1">
-                        <p class="diPanDiZhi" id="diPanDiZhi6">6&nbsp;</p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+                <td class="r1t1">
+                    <p class="xing" id="tianqin7">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing7">星</p> -->
+                </td>
+                <td class="r0t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi2">2&nbsp;</p>
+                </td>
+            </tr>
+            <!--中间-->
+            <tr id="line4">
+                <td class="r1t2">
+                    <p class="gua mu" id="k1s4">3 震</p>
+                </td>
+                <td class="r1t2">
+                    <p class="K0" id="k2s4">&nbsp;</p>
+                </td>
+                <td class="r2t2">
+                    <p class="sr" id="k3s4">&nbsp;</p>
+                </td>
+                <td class="r1t2">
+                    <p class="gua tu" id="k4s4">5 &nbsp;</p>
+                </td>
+                <td class="r1t2">
+                    <p class="K0" id="k5s4">&nbsp;</p>
+                </td>
+                <td class="r2t2">
+                    <p class="sr" id="k6s4">&nbsp;</p>
+                </td>
+                <td class="r1t2">
+                    <p class="gua jin" id="k7s4">7 兑</p>
+                </td>
+                <td class="r1t2">
+                    <p class="sr" id="k8s4">&nbsp;</p>
+                </td>
+                <td class="r0t2">
+                    <p class="sr" id="k9s4">&nbsp;</p>
+                </td>
+            </tr>
+            <tr id="line5">
+                <td class="r1t1">
+                    <p class="sr" id="wu4">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing4">星</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi3">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="wu">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="k5s5">&nbsp;</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi5">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="wu8">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing8">星</p>
+                </td>
+                <td class="r0t1">
+                    <p class="K0" id="tianPanDiZhi7">&nbsp;</p>
+                </td>
+            </tr>
+            <tr id="line6">
+                <td class="r1t1">
+                    <p class="xing" id="tianqin4">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing4">星</p> -->
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi3">3&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="tianqinx">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xingx">&nbsp;</p>
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi5">5&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="tianqin8">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing8">星</p> -->
+                </td>
+                <td class="r0t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi7">7&nbsp;</p>
+                </td>
+            </tr>
+            <!--最下一行-->
+            <tr id="line7">
+                <td class="r1t2">
+                    <p class="gua tu" id="k1s7">8 艮</p>
+                </td>
+                <td class="r1t2">
+                    <p class="K0" id="k2s7">&nbsp;</p>
+                </td>
+                <td class="r2t2">
+                    <p class="K0" id="k3s7">&nbsp;</p>
+                </td>
+                <td class="r1t2">
+                    <p class="gua shui" id="k4s7">1 坎</p>
+                </td>
+                <td class="r1t2">
+                    <p class="K0" id="k5s7">&nbsp;</p>
+                </td>
+                <td class="r2t2">
+                    <p class="sr" id="k6s7">&nbsp;</p>
+                </td>
+                <td class="r1t2">
+                    <p class="gua jin" id="k7s7">6 乾</p>
+                </td>
+                <td class="r1t2">
+                    <p class="K0" id="k8s7">&nbsp;</p>
+                </td>
+                <td class="r0t2">
+                    <p class="K0" id="k9s7">&nbsp;</p>
+                </td>
+            </tr>
+            <tr id="line8">
+                <td class="r1t1">
+                    <p class="sr" id="wu3">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing3">星</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi8">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing2">星</p>
+                </td>
+                <td class="r2t1">
+                    <p class="K0" id="tianPanDiZhi1">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="sr" id="wu1">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="xing1">星</p>
+                </td>
+                <td class="r0t1">
+                    <p class="K0" id="tianPanDiZhi6">&nbsp;</p>
+                </td>
+            </tr>
+            <tr id="line9">
+                <td class="r1t1">
+                    <p class="xing" id="tianqin3">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing3">星</p> -->
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi8">8&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="tianqin2">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing2">星</p> -->
+                </td>
+                <td class="r2t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi1">1&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <p class="xing" id="tianqin1">&nbsp;</p>
+                </td>
+                <td class="r1t1">
+                    <!-- <p class="xing" id="xing1">星</p> -->
+                </td>
+                <td class="r0t1">
+                    <p class="diPanDiZhi" id="diPanDiZhi6">6&nbsp;</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <footer class="bs-docs-footer">
-        <div class="container">
-            <hr>
-            <p id="jieQi"></p>
-            <p>Designed and built with all the love in the world by <a href="https://qfdk.me" rel="noopener"
-                    target="_blank">@qfdk</a>.</p>
-            <p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank"
-                    rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/"
-                    target="_blank" rel="license noopener">CC BY 3.0</a>.
-            </p>
-        </div>
-    </footer>
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/app.js"></script>
+</div>
+<footer class="bs-docs-footer">
+    <div class="container">
+        <hr>
+        <p id="jieQi"></p>
+        <p>Designed and built with all the love in the world by <a href="https://qfdk.me" rel="noopener"
+                                                                   target="_blank">@qfdk</a>.</p>
+        <p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank"
+                            rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/"
+                                                                    target="_blank" rel="license noopener">CC BY 3.0</a>.
+        </p>
+    </div>
+</footer>
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 
 </html>

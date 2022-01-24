@@ -5,9 +5,6 @@ const path = require('path');
 const {Lunar, Solar} = require('lunar-javascript');
 const {xunShouMap, diPanDiZhiList, xing, xingList} = require('./lib/constants');
 
-const LUNAR = Lunar.fromDate(new Date());
-const SOLAR = Solar.fromDate(new Date());
-
 const qimen = {};
 
 // view engine setup
@@ -16,20 +13,13 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 // public files
 app.use(express.static(path.join(__dirname, 'public')));
-
-const timeDetail = (inputDate) => {
-    const year = inputDate.getFullYear();
-    const month = inputDate.getMonth() + 1;
-    const date = inputDate.getDate();
-    const hour = inputDate.getHours();
-    return {year, month, date, hour};
-};
+app.disable('view cache');
 
 /**
  * 获取四柱
  * @param date 时间 new Date()
  */
-const getSiZhu = () => {
+const getSiZhu = (LUNAR) => {
     return {
         year: LUNAR.getYearInGanZhi(),
         month: LUNAR.getMonthInGanZhi(),
@@ -38,26 +28,28 @@ const getSiZhu = () => {
     };
 };
 
-const getXunshou = () => {
+const getXunshou = (LUNAR) => {
     return LUNAR.getTimeXun();
 };
 
 // index
 app.get('/', (req, res) => {
+    const LUNAR = Lunar.fromDate(new Date());
     // 获取当时四柱
-    const sizhu = getSiZhu();
+    const sizhu = getSiZhu(LUNAR);
 
     // 旬首
-    const xunShou = getXunshou();
+    const xunShou = getXunshou(LUNAR);
     qimen['旬首'] = xunShouMap[xunShou];
     qimen['时干'] = sizhu.time;
 
     // set局数(now);
     // 计算局数 考虑传参数进来
-    qimen['地盘地支'] = getDiPanDiZhi("阳-5");
+    qimen['局'] = "阳-5";
+    qimen['地盘地支'] = get地盘地支(qimen['局']);
     set天盘星();
     res.render('index', {
-        time: SOLAR.toFullString(),
+        time: Solar.fromDate(new Date()).toFullString(),
         sizhu,
         xunshou: xunShou + '-' + xunShouMap[xunShou]
     });
@@ -85,74 +77,74 @@ app.listen(3000, () => {
  * 茅山法 15日 按照节气来
  * @param {*现在时间} inputDate
  */
-const set局数 = (inputDate) => {
-    const JuMapping = [
-        '小寒-yang-285', '大寒-yang-396', '立春-yang-852', '雨水-yang-963',
-        '惊蛰-yang-174', '春分-yang-396', '清明-yang-417', '谷雨-yang-528',
-        '立夏-yang-417', '小满-yang-528', '芒种-yang-639', '夏至-yin-936',
-        '小暑-yin-825', '大暑-yin-714', '立秋-yin-258', '处暑-yin-147',
-        '白露-yin-936', '秋分-yin-714', '寒露-yin-693', '霜降-yin-582',
-        '立冬-yin-693', '小雪-yin-582', '大雪-yin-471', '冬至-yang-174'];
-
-    const DifferenceInMonth = [
-        1272060, 1275495, 1281180, 1289445, 1299225, 1310355,
-        1321560, 1333035, 1342770, 1350855, 1356420, 1359045,
-        1358580, 1355055, 1348695, 1340040, 1329630, 1318455,
-        1306935, 1297380, 1286865, 1277730, 1274550, 1271556];
-    const DifferenceInYear = 31556926;
-    const BeginTime = new Date(1901 / 1 / 1);
-    BeginTime.setTime(947120460000);
-    for (; inputDate.getFullYear() < BeginTime.getFullYear();) {
-        BeginTime.setTime(BeginTime.getTime() - DifferenceInYear * 1000);
-    }
-    for (; inputDate.getFullYear() > BeginTime.getFullYear();) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInYear * 1000);
-    }
-    for (var M = 0; inputDate.getMonth() > BeginTime.getMonth(); M++) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
-    }
-
-    if (inputDate.getDate() > BeginTime.getDate()) {
-        BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
-        M == 23 ? M = 0 : M++;
-    }
-
-    let yuan = '';
-    let ju = '';
-    let diff = Math.ceil((inputDate.getTime() - BeginTime.getTime()) / 86400000);
-
-    /**
-     * 15 天一个循环
-     * 1-5 上元 0
-     * 5-10 中元 1
-     * 11-15 下元 2
-     */
-    if (diff <= 5) {
-        yuan = 0;
-    }
-    if (diff > 5 && diff <= 10) {
-        yuan = 1;
-    }
-    if (diff > 10) {
-        yuan = 2;
-    }
-
-    let data = JuMapping[(M - 1) < 0 ? M - 1 + 24 : M].split('-');
-    if (data[1] == 'yin') {
-        ju = '阴遁' + data[2].split('')[yuan] + ' 局';
-    } else {
-        ju = '阳遁' + data[2].split('')[yuan] + ' 局';
-    }
-    qimen['地盘地支'] = getDiPanDiZhi(data[1] + '-' + data[2].split('')[yuan]);
-    qimen['局'] = ju;
-};
+// const set局数 = (inputDate) => {
+//     const JuMapping = [
+//         '小寒-yang-285', '大寒-yang-396', '立春-yang-852', '雨水-yang-963',
+//         '惊蛰-yang-174', '春分-yang-396', '清明-yang-417', '谷雨-yang-528',
+//         '立夏-yang-417', '小满-yang-528', '芒种-yang-639', '夏至-yin-936',
+//         '小暑-yin-825', '大暑-yin-714', '立秋-yin-258', '处暑-yin-147',
+//         '白露-yin-936', '秋分-yin-714', '寒露-yin-693', '霜降-yin-582',
+//         '立冬-yin-693', '小雪-yin-582', '大雪-yin-471', '冬至-yang-174'];
+//
+//     const DifferenceInMonth = [
+//         1272060, 1275495, 1281180, 1289445, 1299225, 1310355,
+//         1321560, 1333035, 1342770, 1350855, 1356420, 1359045,
+//         1358580, 1355055, 1348695, 1340040, 1329630, 1318455,
+//         1306935, 1297380, 1286865, 1277730, 1274550, 1271556];
+//     const DifferenceInYear = 31556926;
+//     const BeginTime = new Date(1901 / 1 / 1);
+//     BeginTime.setTime(947120460000);
+//     for (; inputDate.getFullYear() < BeginTime.getFullYear();) {
+//         BeginTime.setTime(BeginTime.getTime() - DifferenceInYear * 1000);
+//     }
+//     for (; inputDate.getFullYear() > BeginTime.getFullYear();) {
+//         BeginTime.setTime(BeginTime.getTime() + DifferenceInYear * 1000);
+//     }
+//     for (var M = 0; inputDate.getMonth() > BeginTime.getMonth(); M++) {
+//         BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
+//     }
+//
+//     if (inputDate.getDate() > BeginTime.getDate()) {
+//         BeginTime.setTime(BeginTime.getTime() + DifferenceInMonth[M] * 1000);
+//         M == 23 ? M = 0 : M++;
+//     }
+//
+//     let yuan = '';
+//     let ju = '';
+//     let diff = Math.ceil((inputDate.getTime() - BeginTime.getTime()) / 86400000);
+//
+//     /**
+//      * 15 天一个循环
+//      * 1-5 上元 0
+//      * 5-10 中元 1
+//      * 11-15 下元 2
+//      */
+//     if (diff <= 5) {
+//         yuan = 0;
+//     }
+//     if (diff > 5 && diff <= 10) {
+//         yuan = 1;
+//     }
+//     if (diff > 10) {
+//         yuan = 2;
+//     }
+//
+//     let data = JuMapping[(M - 1) < 0 ? M - 1 + 24 : M].split('-');
+//     if (data[1] == 'yin') {
+//         ju = '阴遁' + data[2].split('')[yuan] + ' 局';
+//     } else {
+//         ju = '阳遁' + data[2].split('')[yuan] + ' 局';
+//     }
+//     qimen['地盘地支'] = get地盘地支(data[1] + '-' + data[2].split('')[yuan]);
+//     qimen['局'] = ju;
+// };
 
 /**
  * 阴阳遁-局数
  * yin/yang-N
  * @param {String} info
  */
-const getDiPanDiZhi = (info) => {
+const get地盘地支 = (info) => {
     let i;
     const result = {};
     const type = info.split('-')[0];
