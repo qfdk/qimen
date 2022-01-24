@@ -50,10 +50,12 @@ app.get('/', (req, res) => {
     // 旬首
     const xunShou = getXunshou();
     qimen['旬首'] = xunShouMap[xunShou];
-    qimen['时干'] = sizhu.hour;
+    qimen['时干'] = sizhu.time;
 
-    // set天盘星();
     // set局数(now);
+    // 计算局数 考虑传参数进来
+    qimen['地盘地支'] = getDiPanDiZhi("阳-5");
+    set天盘星();
     res.render('index', {
         time: SOLAR.toFullString(),
         sizhu,
@@ -191,14 +193,14 @@ const getDiPanDiZhi = (info) => {
 const set天盘星 = () => {
     let zhiFuXing = '';
     for (const dizhi in qimen['地盘地支']) {
-        if (qimen['地盘地支'][dizhi] == qimen['旬首']) {
+        if (qimen['地盘地支'][dizhi] === qimen['旬首']) {
             zhiFuXing = xing[dizhi];
         }
     }
     const shiGan = qimen['时干'].split('')[0];
     let newLuoGong = '';
     for (const t in qimen['地盘地支']) {
-        if (qimen['地盘地支'][t] == shiGan) {
+        if (qimen['地盘地支'][t] === shiGan) {
             newLuoGong = t;
         }
     }
