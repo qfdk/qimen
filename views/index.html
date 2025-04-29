@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>奇门遁甲排盘（茅山派）</title>
+    <title>奇门遁甲排盘系统</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-new.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -19,346 +18,471 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">奇门遁甲排盘系统</a>
+        </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">奇门遁甲排盘</a>
-    </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/">实时排盘</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#customPanModal">自定义排盘</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#helpModal">使用说明</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active">
-                <a href="#">主页</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-</nav>
-<div class="container">
-    <p class="text-center">
-            <span class="label label-primary">
-                    <%= sizhu.year %>
-                </span>&nbsp;年
-        <span class="label label-primary">
-                    <%= sizhu.month %>
-                </span>&nbsp;月
-        <span class="label label-primary">
-                    <%= sizhu.day %>
-                </span>&nbsp;日
-        <span class="label label-primary">
-                    <%= sizhu.time %>
-                </span>&nbsp;时
-
-        <span class="label label-info">
-                    旬首:
-                    <%= xunshou %>
-                </span>
-    </p>
-    <p class="text-center">
-          <span class="label label-info">
-                    <%= time %>
-                </span>
-    </p>
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <table class="ptb" border="0" cellspacing="0" cellpadding="0">
-            <tbody>
-            <tr id="line1">
-                <td class="r1t0">
-                    <p class="gua mu" id="k1s1">4 巽</p>
-                </td>
-                <td class="r1t0">
-                    <p class="K0" id="k2s1">&nbsp;</p>
-                </td>
-                <td class="r2t0">
-                    <p class="K0" id="k3s1">&nbsp;</p>
-                </td>
-                <td class="r1t0">
-                    <p class="gua huo" id="k4s1">9 离</p>
-                </td>
-                <td class="r1t0">
-                    <p class="sr" id="k5s1">&nbsp;</p>
-                </td>
-                <td class="r2t0">
-                    <p class="K0" id="k6s1">&nbsp;</p>
-                </td>
-                <td class="r1t0">
-                    <p class="gua tu" id="k7s1">2 坤</p>
-                </td>
-                <td class="r1t0">
-                    <p class="K0" id="k8s1">&nbsp;</p>
-                </td>
-                <td class="r0t0">
-                    <p class="sr" id="k9s1">&nbsp;</p>
-                </td>
-            </tr>
-            <tr id="line2">
-                <td class="r1t1">
-                    <p class="sr" id="wu5">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing5">星</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi4">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="wu6">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing6">星</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi9">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="wu7">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing7">星</p>
-                </td>
-                <td class="r0t1">
-                    <p class="K0" id="tianPanDiZhi2">&nbsp;</p>
-                </td>
-            </tr>
-
-            <tr id="line3">
-                <td class="r1t1">
-                    <p class="xing" id="tianqin5">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing5">星</p> -->
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi4">4&nbsp;</p>
-                </td>
-
-                <td class="r1t1">
-                    <p class="xing" id="tianqin6">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing6">星</p> -->
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi9">9&nbsp;</p>
-                </td>
-
-                <td class="r1t1">
-                    <p class="xing" id="tianqin7">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing7">星</p> -->
-                </td>
-                <td class="r0t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi2">2&nbsp;</p>
-                </td>
-            </tr>
-            <!--中间-->
-            <tr id="line4">
-                <td class="r1t2">
-                    <p class="gua mu" id="k1s4">3 震</p>
-                </td>
-                <td class="r1t2">
-                    <p class="K0" id="k2s4">&nbsp;</p>
-                </td>
-                <td class="r2t2">
-                    <p class="sr" id="k3s4">&nbsp;</p>
-                </td>
-                <td class="r1t2">
-                    <p class="gua tu" id="k4s4">5 &nbsp;</p>
-                </td>
-                <td class="r1t2">
-                    <p class="K0" id="k5s4">&nbsp;</p>
-                </td>
-                <td class="r2t2">
-                    <p class="sr" id="k6s4">&nbsp;</p>
-                </td>
-                <td class="r1t2">
-                    <p class="gua jin" id="k7s4">7 兑</p>
-                </td>
-                <td class="r1t2">
-                    <p class="sr" id="k8s4">&nbsp;</p>
-                </td>
-                <td class="r0t2">
-                    <p class="sr" id="k9s4">&nbsp;</p>
-                </td>
-            </tr>
-            <tr id="line5">
-                <td class="r1t1">
-                    <p class="sr" id="wu4">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing4">星</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi3">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="wu">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="k5s5">&nbsp;</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi5">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="wu8">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing8">星</p>
-                </td>
-                <td class="r0t1">
-                    <p class="K0" id="tianPanDiZhi7">&nbsp;</p>
-                </td>
-            </tr>
-            <tr id="line6">
-                <td class="r1t1">
-                    <p class="xing" id="tianqin4">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing4">星</p> -->
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi3">3&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="tianqinx">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xingx">&nbsp;</p>
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi5">5&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="tianqin8">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing8">星</p> -->
-                </td>
-                <td class="r0t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi7">7&nbsp;</p>
-                </td>
-            </tr>
-            <!--最下一行-->
-            <tr id="line7">
-                <td class="r1t2">
-                    <p class="gua tu" id="k1s7">8 艮</p>
-                </td>
-                <td class="r1t2">
-                    <p class="K0" id="k2s7">&nbsp;</p>
-                </td>
-                <td class="r2t2">
-                    <p class="K0" id="k3s7">&nbsp;</p>
-                </td>
-                <td class="r1t2">
-                    <p class="gua shui" id="k4s7">1 坎</p>
-                </td>
-                <td class="r1t2">
-                    <p class="K0" id="k5s7">&nbsp;</p>
-                </td>
-                <td class="r2t2">
-                    <p class="sr" id="k6s7">&nbsp;</p>
-                </td>
-                <td class="r1t2">
-                    <p class="gua jin" id="k7s7">6 乾</p>
-                </td>
-                <td class="r1t2">
-                    <p class="K0" id="k8s7">&nbsp;</p>
-                </td>
-                <td class="r0t2">
-                    <p class="K0" id="k9s7">&nbsp;</p>
-                </td>
-            </tr>
-            <tr id="line8">
-                <td class="r1t1">
-                    <p class="sr" id="wu3">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing3">星</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi8">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing2">星</p>
-                </td>
-                <td class="r2t1">
-                    <p class="K0" id="tianPanDiZhi1">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="sr" id="wu1">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="xing1">星</p>
-                </td>
-                <td class="r0t1">
-                    <p class="K0" id="tianPanDiZhi6">&nbsp;</p>
-                </td>
-            </tr>
-            <tr id="line9">
-                <td class="r1t1">
-                    <p class="xing" id="tianqin3">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing3">星</p> -->
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi8">8&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="tianqin2">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing2">星</p> -->
-                </td>
-                <td class="r2t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi1">1&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <p class="xing" id="tianqin1">&nbsp;</p>
-                </td>
-                <td class="r1t1">
-                    <!-- <p class="xing" id="xing1">星</p> -->
-                </td>
-                <td class="r0t1">
-                    <p class="diPanDiZhi" id="diPanDiZhi6">6&nbsp;</p>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<footer class="bs-docs-footer">
     <div class="container">
-        <hr>
-        <p id="jieQi"></p>
-        <p>Designed and built with all the love in the world by <a href="https://qfdk.me" rel="noopener"
-                                                                   target="_blank">@qfdk</a>.</p>
-        <p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank"
-                            rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/"
-                                                                    target="_blank" rel="license noopener">CC BY 3.0</a>.
-        </p>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="page-title">奇门遁甲排盘</h2>
+                <div class="basic-info">
+                    <div class="info-item">
+                        <strong>排盘类型:</strong> <span id="panType"><%= qimen.basicInfo && qimen.basicInfo.type || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>排盘方法:</strong> <span id="panMethod"><%= qimen.basicInfo && qimen.basicInfo.method || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>公历:</strong> <span id="solarDate"><%= qimen.basicInfo && qimen.basicInfo.date || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>农历:</strong> <span id="lunarDate"><%= qimen.basicInfo && qimen.basicInfo.lunarDate || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>四柱:</strong>
+                        <span class="label label-primary"><%= qimen.siZhu && qimen.siZhu.year || '' %></span>
+                        <span class="label label-primary"><%= qimen.siZhu && qimen.siZhu.month || '' %></span>
+                        <span class="label label-primary"><%= qimen.siZhu && qimen.siZhu.day || '' %></span>
+                        <span class="label label-primary"><%= qimen.siZhu && qimen.siZhu.time || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>旬首:</strong> <span id="xunShou"><%= qimen.xunShou || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>局数:</strong> <span id="juShu"><%= qimen.juShu && qimen.juShu.fullName || '' %></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>值符:</strong> <span id="zhiFu"><%= qimen.zhiFuXing || '' %>(<%= qimen.zhiFuGong || '' %>宫)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>值使:</strong> <span id="zhiShi"><%= qimen.zhiShiMen || '' %>(<%= qimen.zhiShiGong || '' %>宫)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>运势:</strong> <span id="overallLuck" class="<%= qimen.analysis && qimen.analysis.overallJiXiong || 'ping' %>"><%= qimen.analysis && qimen.analysis.overallJiXiongText || '平' %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- 奇门九宫图 -->
+                <div class="qimen-pan">
+                    <div class="pan-outer">
+                        <div class="pan-grid">
+                            <!-- A. 第一行 - 4,9,2 -->
+                            <div class="gong gong4">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '六合',
+                                    directionWuxing: '东南 木',
+                                    baMen: '杜门',
+                                    jiuXing: '天辅',
+                                    gongName: '巽',
+                                    gongNumber: '四',
+                                    tianPan: '乙',
+                                    diPan: '乙',
+                                    diZhi: '巳',
+                                    tianGanFang: '庚',
+                                    showEmptyCircle: false
+                                }) %>
+                            </div>
+
+                            <div class="gong gong9">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '白虎',
+                                    directionWuxing: '南 火',
+                                    baMen: '景门',
+                                    jiuXing: '天英',
+                                    gongName: '离',
+                                    gongNumber: '九',
+                                    tianPan: '',
+                                    diPan: '丁',
+                                    diZhi: '丙',
+                                    tianGanFang: '己',
+                                    showEmptyCircle: false
+                                }) %>
+                            </div>
+
+                            <div class="gong gong2">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '玄武',
+                                    directionWuxing: '西南 土',
+                                    baMen: '死门',
+                                    jiuXing: '天芮',
+                                    gongName: '坤',
+                                    gongNumber: '二',
+                                    tianPan: '丁',
+                                    diPan: '丁',
+                                    diZhi: '寅',
+                                    tianGanFang: '丁',
+                                    showEmptyCircle: true,
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
+                                }) %>
+                            </div>
+
+                            <!-- B. 第二行 - 3,5,7 -->
+                            <div class="gong gong3">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '太阴',
+                                    directionWuxing: '东 木',
+                                    baMen: '伤门',
+                                    jiuXing: '天冲',
+                                    gongName: '震',
+                                    gongNumber: '三',
+                                    tianPan: '丙',
+                                    diPan: '丙',
+                                    diZhi: '辰',
+                                    tianGanFang: '丁',
+                                    showEmptyCircle: false
+                                }) %>
+                            </div>
+
+                            <div class="gong gong5 ping">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '',
+                                    directionWuxing: '中 土',
+                                    baMen: '',
+                                    jiuXing: '天禽',
+                                    gongName: '中',
+                                    gongNumber: '五',
+                                    tianPan: '戊',
+                                    diPan: '戊',
+                                    diZhi: '',
+                                    tianGanFang: '',
+                                    showEmptyCircle: false
+                                }) %>
+                            </div>
+
+                            <div class="gong gong7">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '九地',
+                                    directionWuxing: '西 金',
+                                    baMen: '惊门',
+                                    jiuXing: '天柱',
+                                    gongName: '兑',
+                                    gongNumber: '七',
+                                    tianPan: '庚',
+                                    diPan: '庚',
+                                    diZhi: '申',
+                                    tianGanFang: '庚',
+                                    showEmptyCircle: false
+                                }) %>
+                            </div>
+
+                            <!-- C. 第三行 - 8,1,6 -->
+                            <div class="gong gong8">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '腾蛇',
+                                    directionWuxing: '东北 土',
+                                    baMen: '生门',
+                                    jiuXing: '天任',
+                                    gongName: '艮',
+                                    gongNumber: '八',
+                                    tianPan: '辛',
+                                    diPan: '辛',
+                                    diZhi: '丑',
+                                    tianGanFang: '乙',
+                                    showEmptyCircle: true,
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
+                                }) %>
+                            </div>
+
+                            <div class="gong gong1">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '值符',
+                                    directionWuxing: '北 水',
+                                    baMen: '休门',
+                                    jiuXing: '天蓬',
+                                    gongName: '坎',
+                                    gongNumber: '一',
+                                    tianPan: '壬',
+                                    diPan: '甲',
+                                    diZhi: '子',
+                                    tianGanFang: '癸',
+                                    showEmptyCircle: true,
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
+                                }) %>
+                            </div>
+
+                            <div class="gong gong6">
+                                <%- include('standardGongTemplate', {
+                                    baShen: '九天',
+                                    directionWuxing: '西北 金',
+                                    baMen: '开门',
+                                    jiuXing: '天心',
+                                    gongName: '乾',
+                                    gongNumber: '六',
+                                    tianPan: '己',
+                                    diPan: '己',
+                                    diZhi: '酉',
+                                    tianGanFang: '辛',
+                                    showEmptyCircle: true,
+                                    emptyType: 'gray',
+                                    emptyContent: '空'
+                                }) %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pan-legend">
+                        <div class="legend-item">
+                            <span class="legend-label">五行颜色标记:</span>
+                            <span class="legend-box wuxing-mu">木</span>
+                            <span class="legend-box wuxing-huo">火</span>
+                            <span class="legend-box wuxing-tu">土</span>
+                            <span class="legend-box wuxing-jin">金</span>
+                            <span class="legend-box wuxing-shui">水</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-label">八神:</span>
+                            <span class="legend-box shen wuxing-mu">值符</span>
+                            <span class="legend-box shen wuxing-huo">腾蛇</span>
+                            <span class="legend-box shen wuxing-shui">太阴</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-label">八门:</span>
+                            <span class="legend-box men wuxing-mu">伤门</span>
+                            <span class="legend-box men wuxing-huo">景门</span>
+                            <span class="legend-box men wuxing-shui">休门</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-label">吉凶标记:</span>
+                            <span class="legend-box label-da_ji">大吉</span>
+                            <span class="legend-box label-xiao_ji">小吉</span>
+                            <span class="legend-box label-ping">平</span>
+                            <span class="legend-box label-xiao_xiong">小凶</span>
+                            <span class="legend-box label-da_xiong">大凶</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">分析与建议</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>值符:<strong><%= qimen.zhiFuGong || '5' %>宫(<%= (qimen.jiuGongAnalysis[qimen.zhiFuGong] && qimen.jiuGongAnalysis[qimen.zhiFuGong].gongName) || '中' %>)</strong>, 值使:<strong><%= qimen.zhiShiGong || '5' %>宫(<%= (qimen.jiuGongAnalysis[qimen.zhiShiGong] && qimen.jiuGongAnalysis[qimen.zhiShiGong].gongName) || '中' %>)</strong></p>
+
+                        <% if (qimen.analysis && qimen.analysis.bestGong && qimen.jiuGongAnalysis[qimen.analysis.bestGong]) { %>
+                            <p>最有利方位: <strong><%= qimen.jiuGongAnalysis[qimen.analysis.bestGong].direction || '' %>(<%= qimen.jiuGongAnalysis[qimen.analysis.bestGong].gongName || '' %>宫)</strong></p>
+                        <% } %>
+
+                        <% if (qimen.analysis && qimen.analysis.suggestions && Array.isArray(qimen.analysis.suggestions)) { %>
+                        <h4>建议:</h4>
+                        <ul class="suggestion-list">
+                            <% qimen.analysis.suggestions.forEach(function(suggestion) { %>
+                                <li><%= suggestion %></li>
+                            <% }); %>
+                        </ul>
+                        <% } else { %>
+                        <p>暂无建议</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">九宫详解</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="gong-details">
+                            <% if (qimen.jiuGongAnalysis) { %>
+                            <% for (let i = 1; i <= 9; i++) { %>
+                                <% if (qimen.jiuGongAnalysis[i]) { %>
+                                <div class="col-md-4">
+                                    <div class="panel panel-<%= qimen.jiuGongAnalysis[i].jiXiong && qimen.jiuGongAnalysis[i].jiXiong.includes('ji') ? 'success' : qimen.jiuGongAnalysis[i].jiXiong === 'ping' ? 'info' : 'danger' %>">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><%= i %>-<%= qimen.jiuGongAnalysis[i].gongName || '' %>
+                                            <span class="pull-right label label-<%= qimen.jiuGongAnalysis[i].jiXiong && qimen.jiuGongAnalysis[i].jiXiong.includes('ji') ? 'success' : qimen.jiuGongAnalysis[i].jiXiong === 'ping' ? 'default' : 'danger' %>">
+                                                <%= qimen.jiuGongAnalysis[i].jiXiongText || '平' %>
+                                            </span>
+                                            </h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p><strong>方位:</strong> <%= qimen.jiuGongAnalysis[i].direction || '' %>
+                                            <strong>九星:</strong> <%= qimen.jiuGongAnalysis[i].xing || '' %><% if (qimen.jiuGongAnalysis[i].xingAlias) { %>(<%= qimen.jiuGongAnalysis[i].xingAlias %>)<% } %></p>
+                                            <% if (qimen.jiuGongAnalysis[i].men) { %>
+                                                <p><strong>八门:</strong> <%= qimen.jiuGongAnalysis[i].men %>
+                                            <% } %>
+                                            <% if (qimen.jiuGongAnalysis[i].shen) { %>
+                                                <strong>八神:</strong> <%= qimen.jiuGongAnalysis[i].shen %></p>
+                                            <% } %>
+                                            <p><strong>三奇六仪:</strong> <%= qimen.sanQiLiuYi && qimen.sanQiLiuYi[i] || '' %></p>
+                                            <p class="gong-explain"><%= qimen.jiuGongAnalysis[i].explain || '暂无解释' %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            <% } %>
+                            <% } else { %>
+                            <div class="col-md-12">
+                                <p class="text-center">暂无九宫分析数据</p>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</footer>
-<!-- jQuery -->
-<script src="js/jquery.min.js"></script>
-<!-- Bootstrap JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
+
+    <!-- 自定义排盘模态框 -->
+    <div class="modal fade" id="customPanModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">自定义排盘</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="customPanForm" action="/custom" method="get">
+                        <div class="form-group">
+                            <label for="type">排盘类型</label>
+                            <select class="form-control" id="type" name="type">
+                                <option value="四柱">四柱</option>
+                                <option value="三元">三元</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="method">排盘方法</label>
+                            <select class="form-control" id="method" name="method">
+                                <option value="时家">时家奇门</option>
+                                <option value="日家">日家奇门</option>
+                                <option value="月家">月家奇门</option>
+                                <option value="年家">年家奇门</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">日期</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">时间</label>
+                            <input type="time" class="form-control" id="time" name="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">地点</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="如：北京市">
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose">目的</label>
+                            <select class="form-control" id="purpose" name="purpose">
+                                <option value="综合">综合分析</option>
+                                <option value="事业">事业</option>
+                                <option value="财运">财运</option>
+                                <option value="婚姻">婚姻</option>
+                                <option value="健康">健康</option>
+                                <option value="学业">学业</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="submitCustomPan">排盘</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用说明模态框 -->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">奇门遁甲使用说明</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>奇门遁甲简介</h4>
+                            <p>奇门遁甲是中国古代预测学的一种，与六壬、太乙合称三式。它通过天地之气的运行规律，推算各种事物的吉凶。</p>
+
+                            <h4>基本要素</h4>
+                            <ul>
+                                <li><strong>三奇六仪:</strong> 三奇指戊己庚三个天干，六仪指辛壬癸丁丙乙</li>
+                                <li><strong>八门:</strong> 指休、生、伤、杜、景、死、惊、开八门</li>
+                                <li><strong>九星:</strong> 指天蓬、天芮、天冲、天辅、天禽、天英、天柱、天任、天心九颗星</li>
+                                <li><strong>八神:</strong> 指值符、腾蛇、太阴、六合、白虎、玄武、九地、九天八种神煞</li>
+                                <li><strong>值符值使:</strong> 值符为九星之首，值使为八门之首</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4>排盘方法说明</h4>
+                            <ul>
+                                <li><strong>四柱:</strong> 分别取年、月、日、时四柱</li>
+                                <li><strong>三元:</strong> 只取年、月、日三柱</li>
+                                <li><strong>时家奇门:</strong> 以时辰排盘，适合短期预测</li>
+                                <li><strong>日家奇门:</strong> 以日子排盘，适合中期预测</li>
+                                <li><strong>月家奇门:</strong> 以月份排盘，适合长期预测</li>
+                                <li><strong>年家奇门:</strong> 以年份排盘，适合长期预测</li>
+                            </ul>
+
+                            <h4>吉凶判断</h4>
+                            <p>在奇门遁甲中，吉凶判断主要基于以下因素:</p>
+                            <ul>
+                                <li>值符、值使落宫的吉凶</li>
+                                <li>宫位中九星、八门、八神的组合</li>
+                                <li>八门的性质: 休、生、开、景为吉门；伤、杜、死、惊为凶门</li>
+                                <li>九星的属性与作用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">奇门遁甲排盘系统 &copy; 2025</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

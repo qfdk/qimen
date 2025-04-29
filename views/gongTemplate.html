@@ -1,0 +1,83 @@
+<!-- 宫位内容通用模板 -->
+<div class="gong-content">
+    <!-- 天干 -->
+    <% if (sanQiLiuYi === '戊' || sanQiLiuYi === '己') { %>
+        <div class="item dipan wuxing-tu"><%= sanQiLiuYi %></div>
+    <% } else if (sanQiLiuYi === '庚' || sanQiLiuYi === '辛') { %>
+        <div class="item dipan wuxing-jin"><%= sanQiLiuYi %></div>
+    <% } else if (sanQiLiuYi === '壬' || sanQiLiuYi === '癸') { %>
+        <div class="item dipan wuxing-shui"><%= sanQiLiuYi %></div>
+    <% } else if (sanQiLiuYi === '丁' || sanQiLiuYi === '丙') { %>
+        <div class="item dipan wuxing-huo"><%= sanQiLiuYi %></div>
+    <% } else if (sanQiLiuYi === '乙' || sanQiLiuYi === '甲') { %>
+        <div class="item dipan wuxing-mu"><%= sanQiLiuYi %></div>
+    <% } else { %>
+        <div class="item dipan wuxing-jin"><%= sanQiLiuYi %></div>
+    <% } %>
+
+    <!-- 八神 -->
+    <% if (baShen === '太阴') { %>
+        <div class="item shen wuxing-shui"><%= baShen %></div>
+    <% } else if (baShen === '六合') { %>
+        <div class="item shen wuxing-mu"><%= baShen %></div>
+    <% } else if (baShen === '白虎') { %>
+        <div class="item shen wuxing-yang"><%= baShen %></div>
+    <% } else if (baShen === '玄武') { %>
+        <div class="item shen wuxing-shui"><%= baShen %></div>
+    <% } else if (baShen === '九地') { %>
+        <div class="item shen wuxing-tu"><%= baShen %></div>
+    <% } else if (baShen === '九天') { %>
+        <div class="item shen wuxing-yang"><%= baShen %></div>
+    <% } else if (baShen === '腾蛇') { %>
+        <div class="item shen wuxing-huo"><%= baShen %></div>
+    <% } else if (baShen === '值符') { %>
+        <div class="item shen wuxing-mu"><%= baShen %></div>
+    <% } else { %>
+        <div class="item shen"><%= baShen %></div>
+    <% } %>
+
+    <!-- 八门 -->
+    <% if (baMen === '休门') { %>
+        <div class="item men wuxing-shui"><%= baMen %></div>
+    <% } else if (baMen === '生门' || baMen === '伤门') { %>
+        <div class="item men wuxing-mu"><%= baMen %></div>
+    <% } else if (baMen === '杜门' || baMen === '死门') { %>
+        <div class="item men wuxing-tu"><%= baMen %></div>
+    <% } else if (baMen === '景门') { %>
+        <div class="item men wuxing-huo"><%= baMen %></div>
+    <% } else if (baMen === '惊门' || baMen === '开门') { %>
+        <div class="item men wuxing-jin"><%= baMen %></div>
+    <% } else { %>
+        <div class="item men"><%= baMen %></div>
+    <% } %>
+
+    <!-- 九星 -->
+    <% if (jiuXing === '天蓬') { %>
+        <div class="item xing wuxing-shui"><%= jiuXing %></div>
+    <% } else if (jiuXing === '天冲' || jiuXing === '天辅') { %>
+        <div class="item xing wuxing-mu"><%= jiuXing %></div>
+    <% } else if (jiuXing === '天英') { %>
+        <div class="item xing wuxing-huo"><%= jiuXing %></div>
+    <% } else if (jiuXing === '天柱' || jiuXing === '天心') { %>
+        <div class="item xing wuxing-jin"><%= jiuXing %></div>
+    <% } else if (jiuXing === '天芮' || jiuXing === '天禽' || jiuXing === '天任') { %>
+        <div class="item xing wuxing-tu"><%= jiuXing %></div>
+    <% } else { %>
+        <div class="item xing wuxing-shui"><%= jiuXing %></div>
+    <% } %>
+
+    <!-- 天盘干 -->
+    <% if (tianPan === '戊' || tianPan === '己') { %>
+        <div class="item tianpan wuxing-tu"><%= tianPan %></div>
+    <% } else if (tianPan === '庚' || tianPan === '辛') { %>
+        <div class="item tianpan wuxing-jin"><%= tianPan %></div>
+    <% } else if (tianPan === '壬' || tianPan === '癸') { %>
+        <div class="item tianpan wuxing-shui"><%= tianPan %></div>
+    <% } else if (tianPan === '丁' || tianPan === '丙') { %>
+        <div class="item tianpan wuxing-huo"><%= tianPan %></div>
+    <% } else if (tianPan === '乙' || tianPan === '甲') { %>
+        <div class="item tianpan wuxing-mu"><%= tianPan %></div>
+    <% } else { %>
+        <div class="item tianpan wuxing-jin"><%= tianPan %></div>
+    <% } %>
+</div>
