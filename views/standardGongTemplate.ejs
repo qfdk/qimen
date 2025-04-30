@@ -113,8 +113,11 @@
     } else if (displayTianPan === '乙' || displayTianPan === '甲') {
         tianpanColor = "wuxing-mu";
     }
+    
+    // 在某些特殊情况下，天盘干可能不存在
+    var isEmpty = !displayTianPan || displayTianPan === '';
     %>
-    <div class="gong-tiangan <%= tianpanColor %>"><%= displayTianPan %></div>
+    <div class="gong-tiangan <%= tianpanColor %>"><%= !isEmpty ? displayTianPan : '' %></div>
     
     <!-- 宫位名 - 左下角 -->
     <% 
@@ -153,6 +156,9 @@
     } else if (displayDiPan === '乙' || displayDiPan === '甲') {
         dipanColor = "wuxing-mu";
     }
+    
+    // 地盘干应该总是存在的，但做一个空值检查
+    var isEmptyDiPan = !displayDiPan || displayDiPan === '';
     %>
-    <div class="gong-dipan <%= dipanColor %>"><%= displayDiPan %></div>
+    <div class="gong-dipan <%= dipanColor %>"><%= !isEmptyDiPan ? displayDiPan : '' %></div>
 </div>

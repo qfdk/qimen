@@ -94,156 +94,166 @@
                     <div class="pan-outer">
                         <div class="pan-grid">
                             <!-- A. 第一行 - 4,9,2 -->
-                            <div class="gong gong4">
+                            <div class="gong gong4 <%= qimen.jiuGongAnalysis[4] && qimen.jiuGongAnalysis[4].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '4' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '4' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '六合',
-                                    directionWuxing: '东南 木',
-                                    baMen: '杜门',
-                                    jiuXing: '天辅',
-                                    gongName: '巽',
+                                    baShen: qimen.baShen ? qimen.baShen['4'] : '',
+                                    directionWuxing: JIU_GONG['4'].direction + ' ' + JIU_GONG['4'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['4'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['4'] : '',
+                                    gongName: JIU_GONG['4'].name,
                                     gongNumber: '四',
-                                    tianPan: '乙',
-                                    diPan: '乙',
-                                    diZhi: '巳',
-                                    tianGanFang: '庚',
-                                    showEmptyCircle: false
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['4'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['4'] : '乙',
+                                    diZhi: '卯',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('4'),
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong9">
+                            <div class="gong gong9 <%= qimen.jiuGongAnalysis[9] && qimen.jiuGongAnalysis[9].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '9' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '9' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '白虎',
-                                    directionWuxing: '南 火',
-                                    baMen: '景门',
-                                    jiuXing: '天英',
-                                    gongName: '离',
+                                    baShen: qimen.baShen ? qimen.baShen['9'] : '',
+                                    directionWuxing: JIU_GONG['9'].direction + ' ' + JIU_GONG['9'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['9'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['9'] : '',
+                                    gongName: JIU_GONG['9'].name,
                                     gongNumber: '九',
-                                    tianPan: '',
-                                    diPan: '丁',
-                                    diZhi: '丙',
-                                    tianGanFang: '己',
-                                    showEmptyCircle: false
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['9'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['9'] : '壬',
+                                    diZhi: '未',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('9'),
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong2">
+                            <div class="gong gong2 <%= qimen.jiuGongAnalysis[2] && qimen.jiuGongAnalysis[2].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '2' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '2' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '玄武',
-                                    directionWuxing: '西南 土',
-                                    baMen: '死门',
-                                    jiuXing: '天芮',
-                                    gongName: '坤',
+                                    baShen: qimen.baShen ? qimen.baShen['2'] : '',
+                                    directionWuxing: JIU_GONG['2'].direction + ' ' + JIU_GONG['2'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['2'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['2'] : '',
+                                    gongName: JIU_GONG['2'].name,
                                     gongNumber: '二',
-                                    tianPan: '丁',
-                                    diPan: '丁',
-                                    diZhi: '寅',
-                                    tianGanFang: '丁',
-                                    showEmptyCircle: true,
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['2'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['2'] : '丁',
+                                    diZhi: '丑',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('2'),
                                     emptyType: 'yellow',
                                     emptyContent: '空'
                                 }) %>
                             </div>
 
                             <!-- B. 第二行 - 3,5,7 -->
-                            <div class="gong gong3">
+                            <div class="gong gong3 <%= qimen.jiuGongAnalysis[3] && qimen.jiuGongAnalysis[3].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '3' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '3' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '太阴',
-                                    directionWuxing: '东 木',
-                                    baMen: '伤门',
-                                    jiuXing: '天冲',
-                                    gongName: '震',
+                                    baShen: qimen.baShen ? qimen.baShen['3'] : '',
+                                    directionWuxing: JIU_GONG['3'].direction + ' ' + JIU_GONG['3'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['3'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['3'] : '',
+                                    gongName: JIU_GONG['3'].name,
                                     gongNumber: '三',
-                                    tianPan: '丙',
-                                    diPan: '丙',
-                                    diZhi: '辰',
-                                    tianGanFang: '丁',
-                                    showEmptyCircle: false
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['3'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['3'] : '丙',
+                                    diZhi: '寅',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('3'),
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong5 ping">
+                            <div class="gong gong5 ping <%= qimen.zhiFuGong === '5' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '5' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '',
-                                    directionWuxing: '中 土',
-                                    baMen: '',
-                                    jiuXing: '天禽',
-                                    gongName: '中',
+                                    baShen: qimen.baShen ? qimen.baShen['5'] : '',
+                                    directionWuxing: JIU_GONG['5'].direction + ' ' + JIU_GONG['5'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['5'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['5'] : '',
+                                    gongName: JIU_GONG['5'].name,
                                     gongNumber: '五',
-                                    tianPan: '戊',
-                                    diPan: '戊',
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['5'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['5'] : '戊',
                                     diZhi: '',
                                     tianGanFang: '',
-                                    showEmptyCircle: false
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('5'),
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong7">
+                            <div class="gong gong7 <%= qimen.jiuGongAnalysis[7] && qimen.jiuGongAnalysis[7].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '7' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '7' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '九地',
-                                    directionWuxing: '西 金',
-                                    baMen: '惊门',
-                                    jiuXing: '天柱',
-                                    gongName: '兑',
+                                    baShen: qimen.baShen ? qimen.baShen['7'] : '',
+                                    directionWuxing: JIU_GONG['7'].direction + ' ' + JIU_GONG['7'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['7'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['7'] : '',
+                                    gongName: JIU_GONG['7'].name,
                                     gongNumber: '七',
-                                    tianPan: '庚',
-                                    diPan: '庚',
-                                    diZhi: '申',
-                                    tianGanFang: '庚',
-                                    showEmptyCircle: false
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['7'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['7'] : '庚',
+                                    diZhi: '酉',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('7'),
+                                    emptyType: 'yellow',
+                                    emptyContent: '空'
                                 }) %>
                             </div>
 
                             <!-- C. 第三行 - 8,1,6 -->
-                            <div class="gong gong8">
+                            <div class="gong gong8 <%= qimen.jiuGongAnalysis[8] && qimen.jiuGongAnalysis[8].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '8' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '8' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '腾蛇',
-                                    directionWuxing: '东北 土',
-                                    baMen: '生门',
-                                    jiuXing: '天任',
-                                    gongName: '艮',
+                                    baShen: qimen.baShen ? qimen.baShen['8'] : '',
+                                    directionWuxing: JIU_GONG['8'].direction + ' ' + JIU_GONG['8'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['8'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['8'] : '',
+                                    gongName: JIU_GONG['8'].name,
                                     gongNumber: '八',
-                                    tianPan: '辛',
-                                    diPan: '辛',
-                                    diZhi: '丑',
-                                    tianGanFang: '乙',
-                                    showEmptyCircle: true,
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['8'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['8'] : '辛',
+                                    diZhi: '申',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('8'),
                                     emptyType: 'yellow',
                                     emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong1">
+                            <div class="gong gong1 <%= qimen.jiuGongAnalysis[1] && qimen.jiuGongAnalysis[1].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '1' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '1' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '值符',
-                                    directionWuxing: '北 水',
-                                    baMen: '休门',
-                                    jiuXing: '天蓬',
-                                    gongName: '坎',
+                                    baShen: qimen.baShen ? qimen.baShen['1'] : '',
+                                    directionWuxing: JIU_GONG['1'].direction + ' ' + JIU_GONG['1'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['1'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['1'] : '',
+                                    gongName: JIU_GONG['1'].name,
                                     gongNumber: '一',
-                                    tianPan: '壬',
-                                    diPan: '甲',
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['1'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['1'] : '戊',
                                     diZhi: '子',
-                                    tianGanFang: '癸',
-                                    showEmptyCircle: true,
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('1'),
                                     emptyType: 'yellow',
                                     emptyContent: '空'
                                 }) %>
                             </div>
 
-                            <div class="gong gong6">
+                            <div class="gong gong6 <%= qimen.jiuGongAnalysis[6] && qimen.jiuGongAnalysis[6].jiXiong || 'ping' %> <%= qimen.zhiFuGong === '6' ? 'zhifu' : '' %> <%= qimen.zhiShiGong === '6' ? 'zhishi' : '' %>">
                                 <%- include('standardGongTemplate', {
-                                    baShen: '九天',
-                                    directionWuxing: '西北 金',
-                                    baMen: '开门',
-                                    jiuXing: '天心',
-                                    gongName: '乾',
+                                    baShen: qimen.baShen ? qimen.baShen['6'] : '',
+                                    directionWuxing: JIU_GONG['6'].direction + ' ' + JIU_GONG['6'].element,
+                                    baMen: qimen.baMen ? qimen.baMen['6'] : '',
+                                    jiuXing: qimen.jiuXing ? qimen.jiuXing['6'] : '',
+                                    gongName: JIU_GONG['6'].name,
                                     gongNumber: '六',
-                                    tianPan: '己',
-                                    diPan: '己',
-                                    diZhi: '酉',
-                                    tianGanFang: '辛',
-                                    showEmptyCircle: true,
-                                    emptyType: 'gray',
+                                    tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['6'] : '',
+                                    diPan: qimen.diPan ? qimen.diPan['6'] : '己',
+                                    diZhi: '戌',
+                                    tianGanFang: '',
+                                    showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('6'),
+                                    emptyType: 'yellow',
                                     emptyContent: '空'
                                 }) %>
                             </div>

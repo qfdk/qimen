@@ -18,7 +18,7 @@ app.disable('view cache');
 app.get('/', (req, res) => {
     // 获取当前时间
     const date = new Date();
-    
+
     // 计算奇门盘
     const options = {
         type: '四柱',
@@ -26,15 +26,15 @@ app.get('/', (req, res) => {
         purpose: '综合',
         location: '默认位置'
     };
-    
+
     try {
         const qimenPan = qimen.calculate(date, options);
-        
+
         // 初始化缺失的属性，确保模板不会报错
         if (!qimenPan.jiuGongAnalysis) {
             qimenPan.jiuGongAnalysis = {};
         }
-        
+
         // 确保每个宫位都有基本属性
         for (let i = 1; i <= 9; i++) {
             if (!qimenPan.jiuGongAnalysis[i]) {
@@ -42,18 +42,18 @@ app.get('/', (req, res) => {
                     direction: '',
                     gongName: '',
                     jiXiong: 'ping'
-                }
+                };
             }
         }
-        
+
         // 传递常量给视图
         res.locals.JIU_GONG = qimen.JIU_GONG;
         res.locals.JIU_XING = qimen.JIU_XING;
         res.locals.BA_MEN = qimen.BA_MEN;
         res.locals.BA_SHEN = qimen.BA_SHEN;
-        
+
         // 渲染页面
-        res.render('index', { qimen: qimenPan });
+        res.render('index', {qimen: qimenPan});
     } catch (error) {
         console.error('排盘错误:', error);
         // 返回错误页面
@@ -70,7 +70,7 @@ app.get('/custom', (req, res) => {
     const timeStr = req.query.time;
     const location = req.query.location || '默认位置';
     const purpose = req.query.purpose || '综合';
-    
+
     // 解析日期时间
     let date;
     if (dateStr && timeStr) {
@@ -78,12 +78,12 @@ app.get('/custom', (req, res) => {
     } else {
         date = new Date();
     }
-    
+
     // 检查日期是否有效
     if (isNaN(date.getTime())) {
         return res.status(400).send('无效的日期时间');
     }
-    
+
     try {
         // 计算奇门盘
         const options = {
@@ -92,14 +92,14 @@ app.get('/custom', (req, res) => {
             purpose,
             location
         };
-        
+
         const qimenPan = qimen.calculate(date, options);
-        
+
         // 初始化缺失的属性，确保模板不会报错
         if (!qimenPan.jiuGongAnalysis) {
             qimenPan.jiuGongAnalysis = {};
         }
-        
+
         // 确保每个宫位都有基本属性
         for (let i = 1; i <= 9; i++) {
             if (!qimenPan.jiuGongAnalysis[i]) {
@@ -107,18 +107,18 @@ app.get('/custom', (req, res) => {
                     direction: '',
                     gongName: '',
                     jiXiong: 'ping'
-                }
+                };
             }
         }
-        
+
         // 传递常量给视图
         res.locals.JIU_GONG = qimen.JIU_GONG;
         res.locals.JIU_XING = qimen.JIU_XING;
         res.locals.BA_MEN = qimen.BA_MEN;
         res.locals.BA_SHEN = qimen.BA_SHEN;
-        
+
         // 渲染页面
-        res.render('index', { qimen: qimenPan });
+        res.render('index', {qimen: qimenPan});
     } catch (error) {
         console.error('自定义排盘错误:', error);
         // 返回错误页面
@@ -135,7 +135,7 @@ app.get('/api/qimen', (req, res) => {
     const timeStr = req.query.time;
     const location = req.query.location || '默认位置';
     const purpose = req.query.purpose || '综合';
-    
+
     // 解析日期时间
     let date;
     if (dateStr && timeStr) {
@@ -143,12 +143,12 @@ app.get('/api/qimen', (req, res) => {
     } else {
         date = new Date();
     }
-    
+
     // 检查日期是否有效
     if (isNaN(date.getTime())) {
-        return res.status(400).json({ error: '无效的日期时间' });
+        return res.status(400).json({error: '无效的日期时间'});
     }
-    
+
     try {
         // 计算奇门盘
         const options = {
@@ -157,14 +157,14 @@ app.get('/api/qimen', (req, res) => {
             purpose,
             location
         };
-        
+
         const qimenPan = qimen.calculate(date, options);
-        
+
         // 初始化缺失的属性，确保模板不会报错
         if (!qimenPan.jiuGongAnalysis) {
             qimenPan.jiuGongAnalysis = {};
         }
-        
+
         // 确保每个宫位都有基本属性
         for (let i = 1; i <= 9; i++) {
             if (!qimenPan.jiuGongAnalysis[i]) {
@@ -172,15 +172,15 @@ app.get('/api/qimen', (req, res) => {
                     direction: '',
                     gongName: '',
                     jiXiong: 'ping'
-                }
+                };
             }
         }
-        
+
         // 返回JSON数据
         res.json(qimenPan);
     } catch (error) {
         console.error('API排盘错误:', error);
-        res.status(500).json({ error: '排盘错误', message: error.message });
+        res.status(500).json({error: '排盘错误', message: error.message});
     }
 });
 

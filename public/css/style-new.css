@@ -78,6 +78,7 @@ body {
     padding: 0;
     overflow: hidden;
     aspect-ratio: 1/1;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
 }
 .gong:nth-child(3n) {
     border-right: none;
@@ -89,35 +90,63 @@ body {
 /* 宫位吉凶颜色 */
 .gong.da_ji {
     background-color: #e8f5e9;
+    border: 2px solid #4CAF50;
 }
 
 .gong.xiao_ji {
     background-color: #f1f8e9;
+    border: 1px solid #8BC34A;
 }
 
 .gong.ping {
     background-color: #fff;
+    border: 1px solid #ccc;
 }
 
 .gong.xiao_xiong {
     background-color: #fff8e1;
+    border: 1px solid #FFC107;
 }
 
 .gong.da_xiong {
     background-color: #ffebee;
+    border: 2px solid #F44336;
 }
 
 /* 值符值使高亮 */
 .gong.zhifu {
     border: 2px solid #4CAF50;
+    position: relative;
 }
 
 .gong.zhishi {
     border: 2px solid #2196F3;
+    position: relative;
 }
 
 .gong.zhifu.zhishi {
     border: 2px solid #FFC107;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.gong.zhifu:after {
+    content: '★';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: #4CAF50;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.gong.zhishi:before {
+    content: '☆';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    color: #2196F3;
+    font-size: 12px;
+    z-index: 10;
 }
 
 /* 新的宫位布局 - 根据参考图 */
@@ -159,6 +188,9 @@ body {
     font-size: 16px;
     font-weight: bold;
     margin-top: 2px;
+    padding: 2px;
+    border-radius: 4px;
+    background-color: rgba(200, 200, 200, 0.1);
 }
 
 /* 天干方位 - 右上角灰色 */
@@ -189,19 +221,38 @@ body {
     font-weight: bold;
     padding: 3px 0;
     margin-top: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.gong-bamen:empty {
+    display: none;
+}
+
+.gong:hover .gong-bamen {
+    transform: scale(1.05);
 }
 
 /* 九星 - 居中显示 */
 .gong-jiuxing {
     grid-area: gong-jiuxing;
     text-align: center;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
-    padding: 2px 0;
+    padding: 3px 0;
     margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.gong:hover .gong-jiuxing {
+    transform: scale(1.05);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 /* 宫位名 - 左下角 */
@@ -226,16 +277,30 @@ body {
     text-align: center;
     font-size: 16px;
     align-self: end;
+    color: #000; /* 改为黑色 */
 }
 
 /* 天干 - 右侧位置 */
 .gong-tiangan {
     grid-area: gong-tiangan;
     text-align: right;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
     padding-right: 5px;
     margin-top: -2px;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    display: inline-block;
+    justify-self: end;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gong:hover .gong-tiangan {
+    transform: scale(1.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 地盘干 - 右下角 */
@@ -399,26 +464,113 @@ body {
 /* 五行属性颜色 */
 .wuxing-mu {
     color: #4CAF50 !important; /* 木-绿色 */
+    position: relative;
+    cursor: help;
 }
 
 .wuxing-huo {
     color: #F44336 !important; /* 火-红色 */
+    position: relative;
+    cursor: help;
 }
 
 .wuxing-tu {
     color: #FF9800 !important; /* 土-橙色 */
+    position: relative;
+    cursor: help;
 }
 
 .wuxing-jin {
     color: #9E9E9E !important; /* 金-灰色 */
+    position: relative;
+    cursor: help;
 }
 
 .wuxing-shui {
     color: #2196F3 !important; /* 水-蓝色 */
+    position: relative;
+    cursor: help;
 }
 
 .wuxing-purple {
     color: #9C27B0 !important; /* 特殊-紫色 */
+    position: relative;
+    cursor: help;
+}
+
+.wuxing-mu:hover:after {
+    content: '木属性，东方，生发之气';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.wuxing-huo:hover:after {
+    content: '火属性，南方，熱烈之气';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.wuxing-tu:hover:after {
+    content: '土属性，中央，厚重之气';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.wuxing-jin:hover:after {
+    content: '金属性，西方，坚固之气';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.wuxing-shui:hover:after {
+    content: '水属性，北方，润下之气';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
 }
 
 /* 奇门专用颜色 */
@@ -427,7 +579,7 @@ body {
 }
 
 .di-zhi {
-    color: #aaa; /* 地支颜色-灰色 */
+    color: #666; /* 地支颜色-灰色 */
 }
 
 .separator-line {
