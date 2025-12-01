@@ -231,6 +231,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
+    padding-bottom: 2px;
 }
 
 /* 宫位名2 - 左中位置 */
@@ -253,6 +254,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    padding-bottom: 2px;
 }
 
 /* 天干 - 右侧位置，与八门水平对齐 */
@@ -276,7 +278,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-bottom: 2px;
+    padding-bottom: 2px;
 }
 
 /* 特殊元素样式 */
