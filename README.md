@@ -1,54 +1,78 @@
 # 奇门遁甲排盘系统
 
-一个基于Node.js的奇门遁甲排盘系统，遵循茅山派奇门遁甲排盘方法。
+基于 Node.js 的奇门遁甲排盘系统，遵循茅山派奇门遁甲排盘方法，支持转盘排法。
 
 ## 功能特点
 
-- 实时排盘：根据当前时间自动计算奇门盘
-- 指定时间排盘：可选择任意日期时间进行奇门排盘
-- 完整信息展示：
-  - 局数信息（阴阳遁、上中下元）
-  - 八门分布
-  - 九星分布
-  - 地盘地支
-  - 值符、值使信息
-- 直观的图形化界面
-- 详细的奇门遁甲基础知识
+- **实时排盘** - 根据当前时间自动计算奇门盘
+- **自选时间** - 支持任意日期时间排盘
+- **完整要素** - 包含地盘、天盘、八门、九星、八神、暗干等
+- **直观界面** - 九宫格可视化展示，信息清晰明了
+- **转盘排法** - 采用传统转盘方式排布天盘与八门
 
-## 安装方法
+## 预览
 
-1. 克隆仓库
+访问在线演示：[qm.qfdk.me](https://qm.qfdk.me)
+
+## 快速开始
+
+### 安装
+
 ```bash
 git clone https://github.com/qfdk/qimen.git
 cd qimen
-```
-
-2. 安装依赖
-```bash
-npm install
-# 或者使用 pnpm
 pnpm install
 ```
 
-3. 启动应用
+### 运行
+
 ```bash
-npm start
+pnpm start
 ```
 
-4. 访问应用
-打开浏览器，访问 `http://localhost:3000`
+浏览器访问 `http://localhost:3000`
+
+## Docker 部署
+
+```bash
+# 构建镜像
+docker build -t qimen .
+
+# 运行容器
+docker run -p 3000:3000 qimen
+```
 
 ## 技术栈
 
-- 后端：Node.js + Express
-- 前端：HTML + CSS + JavaScript + Bootstrap
-- 日期处理：lunar-javascript（中国农历/节气计算）
+| 类型 | 技术 |
+|------|------|
+| 后端 | Node.js + Express |
+| 模板 | EJS |
+| 前端 | HTML + CSS + JavaScript + Bootstrap |
+| 历法 | lunar-javascript |
 
-## 奇门遁甲基本原理
+## 项目结构
+
+```
+qimen/
+├── app.js              # 应用入口
+├── lib/                # 核心算法
+│   ├── qimen.js        # 奇门排盘主逻辑
+│   ├── bamen.js        # 八门计算
+│   ├── bashen.js       # 八神计算
+│   ├── jiuxing.js      # 九星计算
+│   ├── dipan.js        # 地盘计算
+│   └── constants.js    # 常量定义
+├── views/              # 页面模板
+├── public/             # 静态资源
+│   ├── css/
+│   └── js/
+└── Dockerfile
+```
+
+## 奇门基础
 
 ### 阴阳遁局数
-
-奇门遁甲根据节气变化有阴阳两种遁法：
 
 **阳遁歌诀：**
 ```
@@ -66,43 +90,16 @@ npm start
 霜降、小雪五八二，大雪四七一。
 ```
 
-每个节气内再分上元、中元、下元三个阶段，各使用不同的局数。
+### 排盘步骤
 
-### 排盘方法
-
-1. 确定当前节气和元（上元/中元/下元）
-2. 确定阴阳遁和局数
-3. 确定地盘地支
-4. 确定值符和天盘星布局
-5. 确定值使和八门布局
-
-## Docker 支持
-
-本项目提供 Docker 支持，可以通过以下命令构建和运行：
-
-```bash
-# 构建镜像
-docker build -t qimen .
-
-# 运行容器
-docker run -p 3000:3000 qimen
-```
-
-## 贡献指南
-
-欢迎贡献代码或提出建议，请通过 GitHub Issues 或 Pull Requests 参与项目。
+1. 确定节气与三元（上元/中元/下元）
+2. 确定阴阳遁与局数
+3. 排布地盘天干地支
+4. 确定值符、值使
+5. 排布天盘九星
+6. 排布八门
+7. 排布八神
 
 ## 许可证
 
-本项目采用 MIT 许可证。
-
-## 作者
-
-**qfdk**
-
-- Website: [qfdk.me](https://qfdk.me)
-- GitHub: [@qfdk](https://github.com/qfdk)
-
-## 致谢
-
-感谢所有对本项目做出贡献的人！
+MIT License
