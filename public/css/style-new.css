@@ -189,8 +189,6 @@ body {
     font-weight: bold;
     margin-top: 2px;
     padding: 2px;
-    border-radius: 4px;
-    background-color: rgba(200, 200, 200, 0.1);
 }
 
 /* 天干方位 - 右上角灰色 */
@@ -221,8 +219,6 @@ body {
     font-weight: bold;
     padding: 3px 0;
     margin-top: 0;
-    border-radius: 4px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -232,6 +228,12 @@ body {
 
 .gong:hover .gong-bamen {
     transform: scale(1.05);
+}
+
+/* 八门的 tooltip 向下显示，避免被上方宫格遮挡 */
+.gong-bamen[class*="wuxing-"]:hover:after {
+    bottom: auto;
+    top: 100%;
 }
 
 /* 九星 - 居中显示 */
@@ -457,8 +459,9 @@ body {
 /* 悬停效果 */
 .gong:hover {
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 10;
+    z-index: 1000;
     transform: scale(1.02);
+    overflow: visible;
 }
 
 /* 五行属性颜色 */
