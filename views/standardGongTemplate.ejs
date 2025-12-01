@@ -12,21 +12,21 @@
     var displayBaShen = typeof baShen !== 'undefined' ? baShen : '';
     var shenColor = "";
     if (displayBaShen === '值符') {
-        shenColor = "wuxing-tu";
+        shenColor = "wuxing-mu";    // 木
     } else if (displayBaShen === '腾蛇') {
-        shenColor = "wuxing-huo";
+        shenColor = "wuxing-huo";   // 火
     } else if (displayBaShen === '太阴') {
-        shenColor = "wuxing-jin";
+        shenColor = "wuxing-jin";   // 金
     } else if (displayBaShen === '六合') {
-        shenColor = "wuxing-mu";
+        shenColor = "wuxing-mu";    // 木
     } else if (displayBaShen === '白虎') {
-        shenColor = "wuxing-jin";
+        shenColor = "wuxing-jin";   // 金
     } else if (displayBaShen === '玄武') {
-        shenColor = "wuxing-shui";
+        shenColor = "wuxing-shui";  // 水
     } else if (displayBaShen === '九地') {
-        shenColor = "wuxing-tu";
+        shenColor = "wuxing-tu";    // 土
     } else if (displayBaShen === '九天') {
-        shenColor = "wuxing-jin";
+        shenColor = "wuxing-jin";   // 金
     }
     %>
     <div class="gong-bashen <%= shenColor %>"><%= displayBaShen %></div>
