@@ -8,25 +8,25 @@
     <div class="gong-dizhi2"></div>
     
     <!-- 八神 - 中上位置 -->
-    <% 
+    <%
     var displayBaShen = typeof baShen !== 'undefined' ? baShen : '';
     var shenColor = "";
-    if (displayBaShen === '太阴') {
-        shenColor = "wuxing-shui";
-    } else if (displayBaShen === '六合') {
-        shenColor = "wuxing-mu";
-    } else if (displayBaShen === '白虎') {
-        shenColor = "wuxing-tu";
-    } else if (displayBaShen === '玄武') {
-        shenColor = "wuxing-purple";
-    } else if (displayBaShen === '九地') {
-        shenColor = "wuxing-tu";
-    } else if (displayBaShen === '九天') {
+    if (displayBaShen === '值符') {
         shenColor = "wuxing-tu";
     } else if (displayBaShen === '腾蛇') {
         shenColor = "wuxing-huo";
-    } else if (displayBaShen === '值符') {
+    } else if (displayBaShen === '太阴') {
+        shenColor = "wuxing-jin";
+    } else if (displayBaShen === '六合') {
         shenColor = "wuxing-mu";
+    } else if (displayBaShen === '白虎') {
+        shenColor = "wuxing-jin";
+    } else if (displayBaShen === '玄武') {
+        shenColor = "wuxing-shui";
+    } else if (displayBaShen === '九地') {
+        shenColor = "wuxing-tu";
+    } else if (displayBaShen === '九天') {
+        shenColor = "wuxing-jin";
     }
     %>
     <div class="gong-bashen <%= shenColor %>"><%= displayBaShen %></div>
@@ -75,22 +75,22 @@
     <div class="gong-gongname2"></div>
     
     <!-- 九星 - 居中显示 -->
-    <% 
+    <%
     var displayJiuXing = typeof jiuXing !== 'undefined' ? jiuXing : '';
     var xingColor = "";
-    if (displayJiuXing === '天蓬') {
+    if (displayJiuXing.includes('天蓬')) {
         xingColor = "wuxing-shui";
-    } else if (displayJiuXing === '天冲') {
+    } else if (displayJiuXing.includes('天冲')) {
         xingColor = "wuxing-mu";
-    } else if (displayJiuXing === '天辅') {
+    } else if (displayJiuXing.includes('天辅')) {
         xingColor = "wuxing-mu";
-    } else if (displayJiuXing === '天英') {
+    } else if (displayJiuXing.includes('天英')) {
         xingColor = "wuxing-huo";
-    } else if (displayJiuXing === '天柱') {
+    } else if (displayJiuXing.includes('天柱')) {
         xingColor = "wuxing-jin";
-    } else if (displayJiuXing === '天心') {
+    } else if (displayJiuXing.includes('天心')) {
         xingColor = "wuxing-jin";
-    } else if (displayJiuXing === '天芮' || displayJiuXing === '天禽' || displayJiuXing === '天任') {
+    } else if (displayJiuXing.includes('天芮') || displayJiuXing.includes('天禽') || displayJiuXing.includes('天任') || displayJiuXing.includes('禽') || displayJiuXing.includes('芮')) {
         xingColor = "wuxing-tu";
     }
     %>

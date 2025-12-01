@@ -60,7 +60,7 @@ body {
     grid-template-rows: repeat(3, 1fr);
     gap: 0;
     width: 100%;
-    max-width: 600px;
+    max-width: 480px;
     aspect-ratio: 1/1;
     position: relative;
     z-index: 2;
@@ -87,30 +87,25 @@ body {
     border-bottom: none;
 }
 
-/* 宫位吉凶颜色 */
+/* 宫位吉凶颜色 - 暂时去掉背景色 */
 .gong.da_ji {
-    background-color: #e8f5e9;
-    border: 2px solid #4CAF50;
+    background-color: #fff;
 }
 
 .gong.xiao_ji {
-    background-color: #f1f8e9;
-    border: 1px solid #8BC34A;
+    background-color: #fff;
 }
 
 .gong.ping {
     background-color: #fff;
-    border: 1px solid #ccc;
 }
 
 .gong.xiao_xiong {
-    background-color: #fff8e1;
-    border: 1px solid #FFC107;
+    background-color: #fff;
 }
 
 .gong.da_xiong {
-    background-color: #ffebee;
-    border: 2px solid #F44336;
+    background-color: #fff;
 }
 
 /* 值符值使高亮 */
@@ -152,9 +147,9 @@ body {
 /* 新的宫位布局 - 根据参考图 */
 .gong-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas: 
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
         "gong-dizhi  gong-bashen  gong-tianganfang"
         "gong-dizhi2 gong-jiuxing gong-tianganfang2"
         "gong-gongname2 gong-bamen gong-tiangan"
@@ -162,14 +157,15 @@ body {
     height: 100%;
     width: 100%;
     position: relative;
-    padding: 8px;
+    padding: 4px;
+    gap: 0;
 }
 
 /* 地支 - 左上角灰色 */
 .gong-dizhi {
     grid-area: gong-dizhi;
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     color: #aaa;
 }
 
@@ -185,7 +181,7 @@ body {
 .gong-bashen {
     grid-area: gong-bashen;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     margin-top: 2px;
     padding: 2px;
@@ -195,7 +191,7 @@ body {
 .gong-tianganfang {
     grid-area: gong-tianganfang;
     text-align: right;
-    font-size: 16px;
+    font-size: 18px;
     color: #aaa;
     display: flex;
     justify-content: flex-end;
@@ -217,8 +213,10 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    padding: 3px 0;
-    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     transition: all 0.3s ease;
 }
 
@@ -240,16 +238,16 @@ body {
 .gong-jiuxing {
     grid-area: gong-jiuxing;
     text-align: center;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     padding: 3px 0;
     margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .gong:hover .gong-jiuxing {
@@ -261,7 +259,7 @@ body {
 .gong-gongname {
     grid-area: gong-gongname;
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     align-self: end;
 }
 
@@ -277,32 +275,28 @@ body {
 .gong-number {
     grid-area: gong-number;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     align-self: end;
     color: #000; /* 改为黑色 */
 }
 
-/* 天干 - 右侧位置 */
+/* 天干 - 右侧位置，与八门水平对齐 */
 .gong-tiangan {
     grid-area: gong-tiangan;
     text-align: right;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     padding-right: 5px;
-    margin-top: -2px;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    display: inline-block;
-    justify-self: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
     position: relative;
     transition: all 0.3s ease;
 }
 
 .gong:hover .gong-tiangan {
     transform: scale(1.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 地盘干 - 右下角 */
@@ -478,13 +472,13 @@ body {
 }
 
 .wuxing-tu {
-    color: #FF9800 !important; /* 土-橙色 */
+    color: #996633 !important; /* 土-褐土色 */
     position: relative;
     cursor: help;
 }
 
 .wuxing-jin {
-    color: #9E9E9E !important; /* 金-灰色 */
+    color: #F4C430 !important; /* 金-闪亮金色 */
     position: relative;
     cursor: help;
 }
