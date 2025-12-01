@@ -106,40 +106,18 @@ body {
     background-color: #fff;
 }
 
-/* 值符值使高亮 */
-.gong.zhifu {
-    border: 2px solid #4CAF50;
-    position: relative;
+
+/* 值符值使下划线标记 */
+.gong.zhifu .gong-jiuxing {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
 }
 
-.gong.zhishi {
-    border: 2px solid #2196F3;
-    position: relative;
-}
-
-.gong.zhifu.zhishi {
-    border: 2px solid #FFC107;
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-}
-
-.gong.zhifu:after {
-    content: '★';
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    color: #4CAF50;
-    font-size: 12px;
-    z-index: 10;
-}
-
-.gong.zhishi:before {
-    content: '☆';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    color: #2196F3;
-    font-size: 12px;
-    z-index: 10;
+.gong.zhishi .gong-bamen {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
 }
 
 /* 新的宫位布局 - 根据参考图 */
@@ -159,12 +137,15 @@ body {
     gap: 0;
 }
 
-/* 地支 - 左上角灰色 */
+/* 地支(暗干) - 左上角灰色 */
 .gong-dizhi {
     grid-area: gong-dizhi;
     text-align: left;
     font-size: 18px;
     color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /* 地支2 - 左中上灰色 */
@@ -172,6 +153,9 @@ body {
     grid-area: gong-dizhi2;
     text-align: left;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     visibility: hidden;
 }
 
@@ -181,20 +165,21 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    margin-top: 2px;
-    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 天干方位 - 右上角灰色 */
+/* 天干方位(标记区域) - 右上角，与天盘干地盘干垂直对齐 */
 .gong-tianganfang {
     grid-area: gong-tianganfang;
-    text-align: right;
+    text-align: center;
     font-size: 18px;
     color: #aaa;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding-top: 2px;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
 }
 
 /* 天干方位2 - 右中上灰色 */
@@ -202,6 +187,9 @@ body {
     grid-area: gong-tianganfang2;
     text-align: right;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     visibility: hidden;
 }
 
@@ -240,7 +228,9 @@ body {
     grid-area: gong-gongname;
     text-align: left;
     font-size: 18px;
-    align-self: end;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
 }
 
 /* 宫位名2 - 左中位置 */
@@ -248,6 +238,9 @@ body {
     grid-area: gong-gongname2;
     text-align: left;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     visibility: hidden;
 }
 
@@ -256,31 +249,33 @@ body {
     grid-area: gong-number;
     text-align: center;
     font-size: 18px;
-    align-self: end;
-    color: #000; /* 改为黑色 */
+    color: #000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 /* 天干 - 右侧位置，与八门水平对齐 */
 .gong-tiangan {
     grid-area: gong-tiangan;
-    text-align: right;
     font-size: 18px;
     font-weight: bold;
-    padding-right: 5px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 100%;
 }
 
 
+
 /* 地盘干 - 右下角 */
 .gong-dipan {
     grid-area: gong-dipan;
-    text-align: right;
     font-size: 18px;
-    align-self: end;
-    padding-right: 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     margin-bottom: 2px;
 }
 
@@ -306,11 +301,30 @@ body {
     background-color: #E0E0E0; /* 灰色圆形标记 */
 }
 
+.green-circle {
+    background-color: #4CAF50; /* 绿色圆形标记 - 马星 */
+    color: white;
+}
+
+/* 天盘干方框标记 - 日柱旬首六仪 */
+.gong-tiangan.tianpan-boxed {
+    border: 2px solid;
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+
+/* 五行边框颜色 */
+.border-mu { border-color: #4CAF50 !important; }    /* 木-绿色 */
+.border-huo { border-color: #F44336 !important; }   /* 火-红色 */
+.border-tu { border-color: #996633 !important; }    /* 土-褐土色 */
+.border-jin { border-color: #FF8109 !important; }   /* 金-橙金色 */
+.border-shui { border-color: #2196F3 !important; }  /* 水-蓝色 */
+
 /* 图例 */
 .pan-legend {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 15px;
     padding: 10px;
     background-color: #f9f9f9;
@@ -319,24 +333,25 @@ body {
 
 .legend-item {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    margin-right: 10px;
-    margin-bottom: 5px;
+    gap: 5px;
 }
 
 .legend-label {
-    margin-right: 5px;
     font-weight: bold;
     color: #555;
+    font-size: 14px;
+    min-width: 80px;
 }
 
 .legend-box {
-    padding: 2px 5px;
+    padding: 2px 6px;
     border: 1px solid #ddd;
     border-radius: 3px;
     background-color: #fff;
-    min-width: 40px;
     text-align: center;
+    font-size: 12px;
 }
 
 /* 宫位详解 */
@@ -384,8 +399,14 @@ body {
         font-size: 14px;
     }
 
-    .legend-item {
-        width: 48%;
+    .legend-label {
+        min-width: 70px;
+        font-size: 13px;
+    }
+
+    .legend-box {
+        font-size: 11px;
+        padding: 2px 4px;
     }
 }
 
@@ -394,8 +415,13 @@ body {
         font-size: 12px;
     }
 
-    .legend-item {
-        width: 100%;
+    .legend-label {
+        min-width: 100%;
+        margin-bottom: 3px;
+    }
+
+    .legend-box {
+        font-size: 11px;
     }
 }
 

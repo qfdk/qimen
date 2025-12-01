@@ -104,11 +104,15 @@
                                     gongNumber: '四',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['4'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['4'] : '乙',
-                                    diZhi: '庚',
+                                    diZhi: qimen.anGan ? qimen.anGan['4'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('4'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '4',
+                                    isZhiShi: qimen.zhiShiGong === '4',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '4',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -122,11 +126,15 @@
                                     gongNumber: '九',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['9'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['9'] : '壬',
-                                    diZhi: '丁',
+                                    diZhi: qimen.anGan ? qimen.anGan['9'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('9'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '9',
+                                    isZhiShi: qimen.zhiShiGong === '9',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '9',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -140,11 +148,15 @@
                                     gongNumber: '二',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['2'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['2'] : '丁',
-                                    diZhi: '壬',
+                                    diZhi: qimen.anGan ? qimen.anGan['2'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('2'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '2',
+                                    isZhiShi: qimen.zhiShiGong === '2',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '2',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -159,11 +171,15 @@
                                     gongNumber: '三',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['3'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['3'] : '丙',
-                                    diZhi: '辛',
+                                    diZhi: qimen.anGan ? qimen.anGan['3'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('3'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '3',
+                                    isZhiShi: qimen.zhiShiGong === '3',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '3',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -177,11 +193,15 @@
                                     gongNumber: '五',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['5'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['5'] : '戊',
-                                    diZhi: '己',
+                                    diZhi: qimen.anGan ? qimen.anGan['5'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('5'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '5',
+                                    isZhiShi: qimen.zhiShiGong === '5',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '5',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -195,11 +215,15 @@
                                     gongNumber: '七',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['7'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['7'] : '庚',
-                                    diZhi: '乙',
+                                    diZhi: qimen.anGan ? qimen.anGan['7'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('7'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '7',
+                                    isZhiShi: qimen.zhiShiGong === '7',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '7',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -214,11 +238,15 @@
                                     gongNumber: '八',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['8'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['8'] : '辛',
-                                    diZhi: '丙',
+                                    diZhi: qimen.anGan ? qimen.anGan['8'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('8'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '8',
+                                    isZhiShi: qimen.zhiShiGong === '8',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '8',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -232,11 +260,15 @@
                                     gongNumber: '一',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['1'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['1'] : '戊',
-                                    diZhi: '癸',
+                                    diZhi: qimen.anGan ? qimen.anGan['1'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('1'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '1',
+                                    isZhiShi: qimen.zhiShiGong === '1',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '1',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
 
@@ -250,46 +282,20 @@
                                     gongNumber: '六',
                                     tianPan: qimen.sanQiLiuYi ? qimen.sanQiLiuYi['6'] : '',
                                     diPan: qimen.diPan ? qimen.diPan['6'] : '己',
-                                    diZhi: '戊',
+                                    diZhi: qimen.anGan ? qimen.anGan['6'] : '',
                                     tianGanFang: '',
                                     showEmptyCircle: qimen.kongWangGong && qimen.kongWangGong.includes('6'),
                                     emptyType: 'yellow',
-                                    emptyContent: '空'
+                                    emptyContent: '空',
+                                    isZhiFu: qimen.zhiFuGong === '6',
+                                    isZhiShi: qimen.zhiShiGong === '6',
+                                    showMaStar: qimen.maStar && qimen.maStar.gong === '6',
+                                    dayXunShou: qimen.dayXunShou
                                 }) %>
                             </div>
                         </div>
                     </div>
 
-                    <div class="pan-legend">
-                        <div class="legend-item">
-                            <span class="legend-label">五行颜色标记:</span>
-                            <span class="legend-box wuxing-mu">木</span>
-                            <span class="legend-box wuxing-huo">火</span>
-                            <span class="legend-box wuxing-tu">土</span>
-                            <span class="legend-box wuxing-jin">金</span>
-                            <span class="legend-box wuxing-shui">水</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-label">八神:</span>
-                            <span class="legend-box shen wuxing-mu">值符</span>
-                            <span class="legend-box shen wuxing-huo">腾蛇</span>
-                            <span class="legend-box shen wuxing-shui">太阴</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-label">八门:</span>
-                            <span class="legend-box men wuxing-mu">伤门</span>
-                            <span class="legend-box men wuxing-huo">景门</span>
-                            <span class="legend-box men wuxing-shui">休门</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-label">吉凶标记:</span>
-                            <span class="legend-box label-da_ji">大吉</span>
-                            <span class="legend-box label-xiao_ji">小吉</span>
-                            <span class="legend-box label-ping">平</span>
-                            <span class="legend-box label-xiao_xiong">小凶</span>
-                            <span class="legend-box label-da_xiong">大凶</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
