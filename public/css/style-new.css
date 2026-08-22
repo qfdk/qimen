@@ -552,3 +552,20 @@ body {
         width: 49%;
     }
 }
+.copy-btn-row {
+    margin: 18px 0 6px;
+}
+.copy-btn-row .btn {
+    padding: 8px 22px;
+    font-size: 15px;
+}
+.copy-tip {
+    margin-left: 12px;
+    color: #5cb85c;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity .3s;
+}
+.copy-tip.show {
+    opacity: 1;
+}

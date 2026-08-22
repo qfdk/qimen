@@ -83,6 +83,10 @@
                     <div class="info-item">
                         <strong>运势:</strong> <span id="overallLuck" class="<%= qimen.analysis && qimen.analysis.overallJiXiong || 'ping' %>"><%= qimen.analysis && qimen.analysis.overallJiXiongText || '平' %></span>
                     </div>
+                    <div class="copy-btn-row">
+                        <button type="button" class="btn btn-success" id="copyPanBtn">一键复制排盘结果</button>
+                        <span id="copyTip" class="copy-tip">已复制到剪贴板，可直接粘贴分享</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -531,6 +535,7 @@
     <script src="js/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script>window.QIMEN_PAN_DATA = <%- JSON.stringify(qimen) %>;</script>
     <script src="js/app.js"></script>
 </body>
 
