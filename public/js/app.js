@@ -28,23 +28,41 @@ $(document).ready(function() {
     $('#copyPanBtn').on('click', function() {
         var pan = window.QIMEN_PAN_DATA;
         if (!pan) {
-            alert('排盘数据尚未加载，无法复制');
+            showToast('排盘数据尚未加载，无法复制', 'err');
             return;
         }
         var text = buildCopyText(pan);
         copyText(text, function(ok) {
-            var $tip = $('#copyTip');
             if (ok) {
-                $tip.addClass('show');
-                setTimeout(function() { $tip.removeClass('show'); }, 2500);
+                showToast('已复制到剪贴板，可直接粘贴分享');
             } else {
-                alert('复制失败，请手动选择页面内容复制');
+                showToast('复制失败，请手动选择页面内容复制', 'err');
             }
         });
     });
 });
 
 var JIXIONG_CN = { ji: '吉', xiong: '凶', ping: '平' };
+
+/**
+ * 轻提示：固定定位的浮层，不参与文档流，因此不会挤动页面布局
+ */
+var toastTimer = null;
+function showToast(msg, type) {
+    var $toast = $('#qmToast');
+    if (!$toast.length) {
+        $toast = $('<div id="qmToast" class="qm-toast" role="status" aria-live="polite"></div>').appendTo('body');
+    }
+    $toast.text(msg)
+        .removeClass('qm-toast-ok qm-toast-err')
+        .addClass(type === 'err' ? 'qm-toast-err' : 'qm-toast-ok');
+    $toast[0].offsetWidth;  // 强制重排，连续点击时过渡动画才会重新播放
+    $toast.addClass('qm-toast-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() {
+        $toast.removeClass('qm-toast-visible');
+    }, 2200);
+}
 
 /**
  * 把排盘数据拼成便于分享的纯文本
@@ -248,11 +266,18 @@ function fallbackCopy(text, cb) {
     try {
         var ta = document.createElement('textarea');
         ta.value = text;
+        // 留在视口内并做成 1px 透明，避免浏览器为了聚焦而滚动页面
         ta.style.position = 'fixed';
-        ta.style.top = '-9999px';
-        ta.style.left = '-9999px';
+        ta.style.top = '0';
+        ta.style.left = '0';
+        ta.style.width = '1px';
+        ta.style.height = '1px';
+        ta.style.padding = '0';
+        ta.style.border = 'none';
+        ta.style.opacity = '0';
         ta.setAttribute('readonly', '');
         document.body.appendChild(ta);
+        if (ta.focus) ta.focus({ preventScroll: true });
         ta.select();
         ta.setSelectionRange(0, ta.value.length);
         var ok = document.execCommand('copy');
