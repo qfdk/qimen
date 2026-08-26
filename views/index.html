@@ -3,6 +3,25 @@
 
 <head>
     <meta charset="utf-8">
+    <script>
+        // 把浏览器时区写入 cookie，服务端据此按访客本地时间排盘；首次访问需刷新一次生效
+        (function () {
+            try {
+                var tz = '';
+                try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+                var val = encodeURIComponent(tz + '|' + (-new Date().getTimezoneOffset()));
+                var re = /(?:^|;\s*)qmtz=([^;]*)/;
+                var before = re.exec(document.cookie);
+                document.cookie = 'qmtz=' + val + ';path=/;max-age=31536000;samesite=lax';
+                var after = re.exec(document.cookie);
+                // 回读确认写入成功（禁用 cookie 时不刷新，避免死循环）；时间已由参数指定时无需刷新
+                if (after && after[1] === val && (!before || before[1] !== val)
+                    && location.search.indexOf('date=') === -1) {
+                    location.reload();
+                }
+            } catch (e) {}
+        })();
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>奇门遁甲排盘系统</title>

@@ -5,6 +5,7 @@ const {Lunar, Solar} = require('lunar-javascript');
 
 // 导入奇门遁甲计算模块
 const qimen = require('./lib/qimen');
+const {resolveUserDate} = require('./lib/localtime');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,8 +17,8 @@ app.disable('view cache');
 
 // 首页 - 实时排盘
 app.get('/', (req, res) => {
-    // 获取当前时间
-    const date = new Date();
+    // 获取访客本地当前时间
+    const date = resolveUserDate(req.headers.cookie);
 
     // 计算奇门盘
     const options = {
@@ -76,7 +77,7 @@ app.get('/custom', (req, res) => {
     if (dateStr && timeStr) {
         date = new Date(`${dateStr}T${timeStr}`);
     } else {
-        date = new Date();
+        date = resolveUserDate(req.headers.cookie);
     }
 
     // 检查日期是否有效
@@ -141,7 +142,7 @@ app.get('/api/qimen', (req, res) => {
     if (dateStr && timeStr) {
         date = new Date(`${dateStr}T${timeStr}`);
     } else {
-        date = new Date();
+        date = resolveUserDate(req.headers.cookie);
     }
 
     // 检查日期是否有效
@@ -184,8 +185,12 @@ app.get('/api/qimen', (req, res) => {
     }
 });
 
-// 启动服务器
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`奇门遁甲排盘系统正在运行，请访问 http://localhost:${port}`);
-});
+// 启动服务器（被 require 时只导出 app，供测试挂载）
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`奇门遁甲排盘系统正在运行，请访问 http://localhost:${port}`);
+    });
+}
+
+module.exports = app;
