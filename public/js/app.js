@@ -6,17 +6,21 @@ $(document).ready(function() {
         String(now.getDate()).padStart(2, '0');
     var timeStr = String(now.getHours()).padStart(2, '0') + ':' +
         String(now.getMinutes()).padStart(2, '0');
+
     $('#date').val(dateStr);
     $('#time').val(timeStr);
+
     // 自定义排盘表单提交
     $('#submitCustomPan').click(function() {
         $('#customPanForm').submit();
     });
+
     // 确保九宫格始终保持正方形比例
     function maintainAspectRatio() {
         var gridWidth = $('.pan-grid').width();
         $('.gong').css('height', gridWidth / 3 + 'px');
     }
+
     maintainAspectRatio();
     $(window).resize(maintainAspectRatio);
 
@@ -39,6 +43,8 @@ $(document).ready(function() {
         });
     });
 });
+
+var JIXIONG_CN = { ji: '吉', xiong: '凶', ping: '平' };
 
 /**
  * 把排盘数据拼成便于分享的纯文本
@@ -138,7 +144,7 @@ function buildCopyText(pan) {
     L.push('【格局】');
     if (pan.geju && pan.geju.length) {
         pan.geju.forEach(function(g) {
-            var tag = g.jiXiong === 'ji' ? '[吉]' : g.jiXiong === 'xiong' ? '[凶]' : '[平]';
+            var tag = '[' + (JIXIONG_CN[g.jiXiong] || '平') + ']';
             var where = g.gong ? '（' + g.gong + '宫）' : '';
             L.push(tag + ' ' + g.name + where + ' — ' + g.explain);
         });
@@ -182,7 +188,7 @@ function buildCopyText(pan) {
         if (a.tianGan || a.diGan) ganLine = (a.tianGan || '') + '加' + (a.diGan || '');
         if (a.anGan) ganLine += (ganLine ? ' ' : '') + '暗' + a.anGan;
         var tags = [];
-        if (a.keYing) tags.push('[' + (a.keYing.jiXiong === 'ji' ? '吉' : a.keYing.jiXiong === 'xiong' ? '凶' : '平') + ']' + a.keYing.name);
+        if (a.keYing) tags.push('[' + (JIXIONG_CN[a.keYing.jiXiong] || '平') + ']' + a.keYing.name);
         if (a.menPo) tags.push('门迫');
         if (a.kongWang) tags.push('空亡');
         if (a.yiMa) tags.push('驿马');
