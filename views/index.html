@@ -535,7 +535,7 @@
     <script src="js/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script>window.QIMEN_PAN_DATA = <%- JSON.stringify(qimen) %>;</script>
+    <script>window.QIMEN_PAN_DATA = <%- JSON.stringify(qimen).replace(/</g, '\\u003c') %>;</script>
     <script src="js/app.js"></script>
 </body>
 
