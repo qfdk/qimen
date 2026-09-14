@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/qfdk/qimen#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
     "ejs": "^6.0.1",
     "express": "^4.21.2",
     "lunar-javascript": "^1.7.3"
