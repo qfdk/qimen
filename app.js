@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
 const {Lunar, Solar} = require('lunar-javascript');
 
 // 导入奇门遁甲计算模块
@@ -14,6 +16,8 @@ app.engine('html', require('ejs').renderFile);
 // public files
 app.use(express.static(path.join(__dirname, 'public')));
 app.disable('view cache');
+app.use(cookieParser());
+app.use(csrf({ cookie: true }));
 
 // 首页 - 实时排盘
 app.get('/', (req, res) => {
